@@ -5,6 +5,13 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    screens: {
+      '2xl': { max: '1535px' },
+      xl: { max: '1279px' },
+      lg: { max: '1023px' },
+      md: { max: '767px' },
+      sm: { max: '639px' },
+    },
     extend: {
       colors: {
         'gradient-dark': '#11101A',
@@ -18,7 +25,7 @@ module.exports = {
       },
       backgroundImage: {
         interstellar:
-          "linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),url('/images/interstellar.png')",
+          "linear-gradient(to right bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),url('/images/interstellar.png')",
         manAndWoman:
           "linear-gradient(to right, rgba(17, 16, 26, 0.95), rgba(8, 8, 13, 0.13)),url('/images/secondMovie.png')",
         lotr: "linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),url('/images/lotr.png')",
