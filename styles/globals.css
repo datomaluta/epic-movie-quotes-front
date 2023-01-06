@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'helvetica-neue';
+    src: url('../assets/fonts/eng/helveticaneue.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica-neue';
+    src: url('../assets/fonts/eng/Helvetica Neue Medium Extended.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+html,
+body {
+    font-family: 'helvetica-neue';
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
