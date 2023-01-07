@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { returnDataTypes } from './type';
+import { ReturnDataTypes } from './types';
 
-const useShowModals = (): returnDataTypes => {
+const useShowModals = (): ReturnDataTypes => {
   const isRegistering = useSelector(
     (state: RootState) => state.auth.isRegistering
   );

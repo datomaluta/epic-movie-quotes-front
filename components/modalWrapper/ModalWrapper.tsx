@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PropsType } from './type';
+import { PropsType } from './types';
 import useModalWrapper from './useModalWrapper';
 
 const ModalWrapper: React.FC<PropsType> = (props) => {
