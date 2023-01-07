@@ -1,15 +1,9 @@
 import { LangSwitch } from 'components';
-import { useDispatch } from 'react-redux';
-import { authActions } from 'store';
+
+import useLandingNavBar from './useLandingNavBar';
 
 const LandingNavBar: React.FC = () => {
-  const dispatch = useDispatch();
-  const showSignupModalHandler = () => {
-    dispatch(authActions.showSignupModal());
-  };
-  const showLoginModalHandler = () => {
-    dispatch(authActions.showLoginModal());
-  };
+  const { showSignupModalHandler, showLoginModalHandler } = useLandingNavBar();
 
   return (
     <nav className='flex justify-between items-center py-6 px-[4.375rem] lg:px-8 fixed top-0 left-0 w-full z-10 sm:absolute'>

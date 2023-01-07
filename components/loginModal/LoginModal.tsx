@@ -1,14 +1,9 @@
 import { Google, ModalWrapper } from 'components';
-import { useDispatch } from 'react-redux';
-import { authActions } from 'store';
+
+import useLoginModal from './useLoginModal';
 
 const LoginModal: React.FC = () => {
-  const dispatch = useDispatch();
-
-  const moveToSignupHandler = () => {
-    dispatch(authActions.hideLoginModal());
-    dispatch(authActions.showSignupModal());
-  };
+  const { moveToSignupHandler } = useLoginModal();
 
   return (
     <ModalWrapper>

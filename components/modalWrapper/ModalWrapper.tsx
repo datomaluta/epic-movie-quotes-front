@@ -1,13 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { authActions } from 'store';
 
-const ModalWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
-  const dispatch = useDispatch();
-  const hideModals = () => {
-    dispatch(authActions.hideSignupModal());
-    dispatch(authActions.hideLoginModal());
-  };
+import { PropsType } from './type';
+import useModalWrapper from './useModalWrapper';
+
+const ModalWrapper: React.FC<PropsType> = (props) => {
+  const { hideModals } = useModalWrapper();
+
   return (
     <div className='fixed w-full h-screen left-0 top-0 z-50'>
       <div

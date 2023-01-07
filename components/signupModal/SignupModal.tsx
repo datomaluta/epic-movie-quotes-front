@@ -1,13 +1,9 @@
 import { Google, ModalWrapper } from 'components';
-import { useDispatch } from 'react-redux';
-import { authActions } from 'store';
+import useSignupModal from './useSignupModal';
 
 const SignupForm: React.FC = () => {
-  const dispatch = useDispatch();
-  const showLoginFormHandler = () => {
-    dispatch(authActions.hideSignupModal());
-    dispatch(authActions.showLoginModal());
-  };
+  const { showLoginFormHandler } = useSignupModal();
+
   return (
     <ModalWrapper>
       <div className='w-[37.563rem] bg-light-blue sm:bg-signup-gradient  rounded-[0.625rem] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center py-[3.313rem] sm:w-full sm:h-screen'>

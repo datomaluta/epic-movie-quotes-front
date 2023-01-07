@@ -1,14 +1,14 @@
-import { Footer, LandingNavBar, MoviePoster, SignupModal } from 'components';
-import { LoginModal } from 'components/loginModal';
-import { useSelector } from 'react-redux';
-import { RootState } from 'store';
+import {
+  Footer,
+  LandingNavBar,
+  MoviePoster,
+  SignupModal,
+  LoginModal,
+} from 'components';
+import { useShowModals } from 'hooks';
 
 export default function Home() {
-  const isRegistering = useSelector(
-    (state: RootState) => state.auth.isRegistering
-  );
-
-  const isLogining = useSelector((state: RootState) => state.auth.isLogining);
+  const { isRegistering, isLogining } = useShowModals();
 
   return (
     <div>
