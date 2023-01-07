@@ -1,13 +1,14 @@
-import { Google, ModalWrapper } from 'components';
+import { Google, BackdropWrapper, ModalWrapper } from 'components';
 
 import useLoginModal from './useLoginModal';
 
 const LoginModal: React.FC = () => {
-  const { moveToSignupHandler } = useLoginModal();
+  const { moveToSignupHandler, showForgotPasswordModalHandler } =
+    useLoginModal();
 
   return (
-    <ModalWrapper>
-      <div className='w-[37.563rem] bg-light-blue sm:bg-signup-gradient  rounded-[0.625rem] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center py-[3.313rem] sm:w-full sm:h-screen'>
+    <BackdropWrapper>
+      <ModalWrapper>
         <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
           Log in to your account
         </h1>
@@ -50,7 +51,11 @@ const LoginModal: React.FC = () => {
                 Remember me
               </label>
             </div>
-            <button type='button' className='text-theme-primary underline'>
+            <button
+              onClick={showForgotPasswordModalHandler}
+              type='button'
+              className='text-theme-primary underline'
+            >
               Forgot password
             </button>
           </div>
@@ -73,8 +78,8 @@ const LoginModal: React.FC = () => {
             </span>
           </p>
         </form>
-      </div>
-    </ModalWrapper>
+      </ModalWrapper>
+    </BackdropWrapper>
   );
 };
 

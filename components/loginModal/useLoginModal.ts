@@ -9,7 +9,11 @@ const useLoginModal = () => {
     dispatch(authActions.showSignupModal());
   };
 
-  return { moveToSignupHandler };
+  const showForgotPasswordModalHandler = () => {
+    dispatch(authActions.setShowForgotPasswordModal());
+  };
+
+  return { moveToSignupHandler, showForgotPasswordModalHandler };
 };
 
 export default useLoginModal;

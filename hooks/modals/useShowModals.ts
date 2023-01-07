@@ -9,7 +9,11 @@ const useShowModals = (): ReturnDataTypes => {
 
   const isLogining = useSelector((state: RootState) => state.auth.isLogining);
 
-  return { isRegistering, isLogining };
+  const showForgotPasswordModal = useSelector(
+    (state: RootState) => state.auth.showForgotPasswordModal
+  );
+
+  return { isRegistering, isLogining, showForgotPasswordModal };
 };
 
 export default useShowModals;

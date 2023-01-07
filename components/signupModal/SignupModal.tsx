@@ -1,12 +1,12 @@
-import { Google, ModalWrapper } from 'components';
+import { Google, BackdropWrapper, ModalWrapper } from 'components';
 import useSignupModal from './useSignupModal';
 
 const SignupForm: React.FC = () => {
   const { showLoginFormHandler } = useSignupModal();
 
   return (
-    <ModalWrapper>
-      <div className='w-[37.563rem] bg-light-blue sm:bg-signup-gradient  rounded-[0.625rem] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center py-[3.313rem] sm:w-full sm:h-screen'>
+    <BackdropWrapper>
+      <ModalWrapper>
         <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
           Create an account
         </h1>
@@ -78,8 +78,8 @@ const SignupForm: React.FC = () => {
             </span>
           </p>
         </form>
-      </div>
-    </ModalWrapper>
+      </ModalWrapper>
+    </BackdropWrapper>
   );
 };
 

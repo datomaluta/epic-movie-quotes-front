@@ -1,1 +1,5 @@
-export type SliceStateType = { isRegistering: boolean; isLogining: boolean };
+export type SliceStateType = {
+  isRegistering: boolean;
+  isLogining: boolean;
+  showForgotPasswordModal;
+};
