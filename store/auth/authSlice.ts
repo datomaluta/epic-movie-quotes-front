@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SliceStateType } from './type';
+import { SliceStateType } from './types';
 
 const initialState: SliceStateType = {
   isRegistering: false,
   isLogining: false,
+  showForgotPasswordModal: false,
 };
 
 const authSlice = createSlice({
@@ -21,6 +22,17 @@ const authSlice = createSlice({
     },
     hideLoginModal(state) {
       state.isLogining = false;
+    },
+    setShowForgotPasswordModal(state) {
+      state.isLogining = false;
+      state.showForgotPasswordModal = true;
+    },
+    setHideForgotPasswordModal(state) {
+      state.showForgotPasswordModal = false;
+    },
+    setBackToLoginModal(state) {
+      state.showForgotPasswordModal = false;
+      state.isLogining = true;
     },
   },
 });

@@ -1,4 +1,4 @@
-const Google: React.FC = () => {
+const GoogleIcon: React.FC = () => {
   return (
     <svg
       width='16'
@@ -15,4 +15,4 @@ const Google: React.FC = () => {
   );
 };
 
-export default Google;
+export default GoogleIcon;

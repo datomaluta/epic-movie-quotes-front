@@ -1,17 +1,11 @@
-import React from 'react';
-
 import { PropsType } from './types';
-import useModalWrapper from './useModalWrapper';
 
 const ModalWrapper: React.FC<PropsType> = (props) => {
-  const { hideModals } = useModalWrapper();
-
   return (
-    <div className='fixed w-full h-screen left-0 top-0 z-50'>
-      <div
-        className='w-full h-screen backdrop-blur-sm'
-        onClick={hideModals}
-      ></div>
+    <div
+      className='w-[37.563rem] bg-light-blue sm:bg-signup-gradient  rounded-[0.625rem] absolute top-1/2 left-1/2 -translate-x-1/2
+     -translate-y-1/2 flex flex-col items-center py-[3.313rem] sm:w-full sm:h-screen'
+    >
       {props.children}
     </div>
   );

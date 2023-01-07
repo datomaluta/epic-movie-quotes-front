@@ -1,4 +1,4 @@
-import { Line, MiniLine } from 'components';
+import { QuoteLine, QuoteMiniLine } from 'components';
 import { PropsType } from './types';
 
 const MoviePoster: React.FC<PropsType> = (props) => {
@@ -8,10 +8,10 @@ const MoviePoster: React.FC<PropsType> = (props) => {
     >
       <div className={`flex gap-4 absolute top-[${props.position}%] left-[9%]`}>
         <div className='pt-8 sm:hidden'>
-          <Line />
+          <QuoteLine />
         </div>
         <div className='pt-3 hidden sm:block'>
-          <MiniLine />
+          <QuoteMiniLine />
         </div>
         <p className='font-montserrat font-bold text-[3.125rem] sm:text-xl '>
           {props.children}
