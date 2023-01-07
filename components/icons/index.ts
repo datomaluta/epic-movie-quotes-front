@@ -1,5 +1,5 @@
 export { default as LangSwitch } from './LangSwitch';
-export { default as Line } from './Line';
-export { default as MiniLine } from './MiniLine';
-export { default as Google } from './Google';
-export { default as Back } from './Back';
+export { default as QuoteLine } from './QuoteLine';
+export { default as QuoteMiniLine } from './QuoteMiniLine';
+export { default as GoogleIcon } from './GoogleIcon';
+export { default as BackArrowIcon } from './BackArrowIcon';

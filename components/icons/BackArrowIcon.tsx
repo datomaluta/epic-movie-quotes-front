@@ -1,4 +1,4 @@
-const Back: React.FC = () => {
+const BackArrowIcon: React.FC = () => {
   return (
     <svg
       width='13'
@@ -15,4 +15,4 @@ const Back: React.FC = () => {
   );
 };
 
-export default Back;
+export default BackArrowIcon;

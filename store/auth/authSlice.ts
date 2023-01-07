@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SliceStateType } from './type';
+import { SliceStateType } from './types';
 
 const initialState: SliceStateType = {
   isRegistering: false,

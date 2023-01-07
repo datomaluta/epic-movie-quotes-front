@@ -1,4 +1,4 @@
-import { Google, BackdropWrapper, ModalWrapper } from 'components';
+import { GoogleIcon, BackdropWrapper, ModalWrapper } from 'components';
 import { TextInput } from 'components';
 import useSignupModal from './useSignupModal';
 
@@ -41,7 +41,7 @@ const SignupForm: React.FC = () => {
             Get Started
           </button>
           <button className='border border-very-light-grey rounded  w-[22.5rem] mt-4 flex items-center justify-center gap-2 py-[0.438rem]'>
-            <Google />
+            <GoogleIcon />
             <span className='text-white'> Sign up with Google</span>
           </button>
 

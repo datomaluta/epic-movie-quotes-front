@@ -1,4 +1,9 @@
-import { Google, BackdropWrapper, ModalWrapper, TextInput } from 'components';
+import {
+  GoogleIcon,
+  BackdropWrapper,
+  ModalWrapper,
+  TextInput,
+} from 'components';
 
 import useLoginModal from './useLoginModal';
 
@@ -48,7 +53,7 @@ const LoginModal: React.FC = () => {
             Sign in
           </button>
           <button className='border border-very-light-grey rounded  w-[22.5rem] mt-4 flex items-center justify-center gap-2 py-[0.438rem]'>
-            <Google />
+            <GoogleIcon />
             <span className='text-white'> Sign in with Google</span>
           </button>
 

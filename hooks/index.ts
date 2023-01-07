@@ -1,1 +1,1 @@
-export * from './modals';
+export { default as useShowModals } from './useShowModals';

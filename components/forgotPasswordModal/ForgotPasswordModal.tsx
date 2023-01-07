@@ -1,5 +1,10 @@
-import { Back, BackdropWrapper, ModalWrapper, TextInput } from 'components';
-import useForgotPasswordModal from './useForgotpasswordModa';
+import {
+  BackArrowIcon,
+  BackdropWrapper,
+  ModalWrapper,
+  TextInput,
+} from 'components';
+import useForgotPasswordModal from './useForgotpasswordModal';
 
 const ForgotPasswordModal: React.FC = () => {
   const { backToLoginModal } = useForgotPasswordModal();
@@ -29,7 +34,7 @@ const ForgotPasswordModal: React.FC = () => {
             className='flex items-center mt-8 mx-auto gap-3'
             onClick={backToLoginModal}
           >
-            <Back />
+            <BackArrowIcon />
             <span className='text-light-grey'>Back to log in</span>
           </button>
         </form>
