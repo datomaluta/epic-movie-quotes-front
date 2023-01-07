@@ -1,4 +1,5 @@
 import { Google, BackdropWrapper, ModalWrapper } from 'components';
+import { TextInput } from 'components';
 import useSignupModal from './useSignupModal';
 
 const SignupForm: React.FC = () => {
@@ -12,53 +13,29 @@ const SignupForm: React.FC = () => {
         </h1>
         <p className='text-light-grey mb-6'>Start your journey!</p>
         <form>
-          <div className='mb-4'>
-            <label className='text-white mb-2 block'>
-              Name
-              <span className='text-red-danger inline-block ml-1'>*</span>
-            </label>
-            <input
-              type='text'
-              placeholder='At least 3 & max.15 lower case characters'
-              className='py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded'
-            />
-          </div>
+          <TextInput
+            label='Name'
+            type='text'
+            placeholder='At least 3 & max.15 lower case characters'
+          />
 
-          <div className='mb-4'>
-            <label className='text-white mb-2 block'>
-              Email
-              <span className='text-red-danger inline-block ml-1'>*</span>
-            </label>
-            <input
-              type='email'
-              placeholder='Enter your email'
-              className='py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded'
-            />
-          </div>
+          <TextInput
+            label='Email'
+            type='email'
+            placeholder='Enter your email'
+          />
 
-          <div className='mb-4'>
-            <label className='text-white mb-2 block'>
-              Password
-              <span className='text-red-danger inline-block ml-1'>*</span>
-            </label>
-            <input
-              type='password'
-              placeholder='At least 8 & max.15 lower case characters'
-              className='py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded'
-            />
-          </div>
+          <TextInput
+            label='Password'
+            type='password'
+            placeholder='At least 8 & max.15 lower case characters'
+          />
 
-          <div className='mb-4'>
-            <label className='text-white mb-2 block'>
-              Confirm Password
-              <span className='text-red-danger inline-block ml-1'>*</span>
-            </label>
-            <input
-              type='password'
-              placeholder='Confirm password'
-              className='py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded'
-            />
-          </div>
+          <TextInput
+            label='Confirm password'
+            type='password'
+            placeholder='Confirm password'
+          />
 
           <button className='bg-dark-red py-2 text-white w-[22.5rem] rounded mt-2'>
             Get Started
@@ -69,13 +46,14 @@ const SignupForm: React.FC = () => {
           </button>
 
           <p className='text-light-grey mt-8 text-center'>
-            Already have an account?{' '}
-            <span
+            Already have an account?
+            <button
+              type='submit'
               onClick={showLoginFormHandler}
               className='text-theme-primary underline cursor-pointer'
             >
               Log in
-            </span>
+            </button>
           </p>
         </form>
       </ModalWrapper>

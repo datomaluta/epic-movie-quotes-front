@@ -1,4 +1,4 @@
-import { Google, BackdropWrapper, ModalWrapper } from 'components';
+import { Google, BackdropWrapper, ModalWrapper, TextInput } from 'components';
 
 import useLoginModal from './useLoginModal';
 
@@ -16,29 +16,13 @@ const LoginModal: React.FC = () => {
           Welcome back! Please enter your details.
         </p>
         <form>
-          <div className='mb-4'>
-            <label className='text-white mb-2 block'>
-              Email
-              <span className='text-red-danger inline-block ml-1'>*</span>
-            </label>
-            <input
-              type='email'
-              placeholder='Enter your email'
-              className='py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded'
-            />
-          </div>
+          <TextInput
+            label='Email'
+            type='email'
+            placeholder='Enter your email'
+          />
 
-          <div className='mb-4'>
-            <label className='text-white mb-2 block'>
-              Password
-              <span className='text-red-danger inline-block ml-1'>*</span>
-            </label>
-            <input
-              type='password'
-              placeholder='At least 8 & max.15 lower case characters'
-              className='py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded'
-            />
-          </div>
+          <TextInput label='Password' type='password' placeholder='Password' />
 
           <div className='flex justify-between items-center mb-2'>
             <div>

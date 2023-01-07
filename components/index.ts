@@ -5,3 +5,4 @@ export * from './signupModal';
 export * from './loginModal';
 export * from './forgotPasswordModal';
 export * from './modalWrapper';
+export * from './inputs';

@@ -1,4 +1,4 @@
-import { Back, BackdropWrapper, ModalWrapper } from 'components';
+import { Back, BackdropWrapper, ModalWrapper, TextInput } from 'components';
 import useForgotPasswordModal from './useForgotpasswordModa';
 
 const ForgotPasswordModal: React.FC = () => {
@@ -14,17 +14,11 @@ const ForgotPasswordModal: React.FC = () => {
           reset your password
         </p>
         <form>
-          <div className='mb-4'>
-            <label className='text-white mb-2 block'>
-              Email
-              <span className='text-red-danger inline-block ml-1'>*</span>
-            </label>
-            <input
-              type='email'
-              placeholder='Enter your email'
-              className='py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded'
-            />
-          </div>
+          <TextInput
+            label='Email'
+            type='email'
+            placeholder='Enter Your Email'
+          />
 
           <button className='bg-dark-red py-2 text-white w-[22.5rem] rounded mt-2'>
             Send Instructions
