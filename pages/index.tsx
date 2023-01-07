@@ -1,9 +1,20 @@
-import { Footer, LandingNavBar, MoviePoster } from 'components';
+import {
+  Footer,
+  LandingNavBar,
+  MoviePoster,
+  SignupModal,
+  LoginModal,
+} from 'components';
+import { useShowModals } from 'hooks';
 
 export default function Home() {
+  const { isRegistering, isLogining } = useShowModals();
+
   return (
     <div>
       <LandingNavBar />
+      {isRegistering && <SignupModal />}
+      {isLogining && <LoginModal />}
       <div className='text-center h-[50.5rem] sm:h-[27.125rem] bg-gradient-to-t from-gradient-dark via-gradient-almost-black to-black  flex flex-col items-center justify-center'>
         <h1 className='text-dark-yellow text-6xl sm:text-2xl font-montserrat font-bold leading-[5.625rem] mb-6 sm:mb-10'>
           Find any quote in <br /> millions of movie lines
