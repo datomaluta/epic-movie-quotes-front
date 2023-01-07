@@ -1,6 +1,16 @@
 import { LangSwitch } from 'components';
+import { useDispatch } from 'react-redux';
+import { authActions } from 'store';
 
 const LandingNavBar: React.FC = () => {
+  const dispatch = useDispatch();
+  const showSignupModalHandler = () => {
+    dispatch(authActions.showSignupModal());
+  };
+  const showLoginModalHandler = () => {
+    dispatch(authActions.showLoginModal());
+  };
+
   return (
     <nav className='flex justify-between items-center py-6 px-[4.375rem] lg:px-8 fixed top-0 left-0 w-full z-10 sm:absolute'>
       <div className='text-dark-yellow font-medium'>MOVIE QUOTES</div>
@@ -8,10 +18,16 @@ const LandingNavBar: React.FC = () => {
         <button className='flex items-center gap-[0.625rem] sm:hidden'>
           <span>Eng</span> <LangSwitch />
         </button>
-        <button className='bg-dark-red px-[1.594rem] py-2 rounded mr-4 ml-10 sm:hidden'>
+        <button
+          onClick={showSignupModalHandler}
+          className='bg-dark-red px-[1.594rem] py-2 rounded mr-4 ml-10 sm:hidden'
+        >
           Sign Up
         </button>
-        <button className='border border-white px-[1.594rem] py-[0.438rem] rounded'>
+        <button
+          onClick={showLoginModalHandler}
+          className='border border-white px-[1.594rem] py-[0.438rem] rounded'
+        >
           Log in
         </button>
       </div>

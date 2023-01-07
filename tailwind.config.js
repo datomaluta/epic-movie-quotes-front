@@ -18,6 +18,11 @@ module.exports = {
         'gradient-almost-black': '#08080D',
         'dark-yellow': '#DDCCAA',
         'dark-red': '#E31221',
+        'light-blue': '#222030',
+        'red-danger': '#DC3545',
+        'light-grey': '#6C757D',
+        'very-light-grey': '#CED4DA',
+        'theme-primary': '#0D6EFD',
       },
       fontFamily: {
         'helvetica-eng': 'helvetica-neue',
@@ -29,6 +34,8 @@ module.exports = {
         manAndWoman:
           "linear-gradient(to right, rgba(17, 16, 26, 0.95), rgba(8, 8, 13, 0.13)),url('/images/secondMovie.png')",
         lotr: "linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),url('/images/lotr.png')",
+        'signup-gradient':
+          'linear-gradient(to bottom, rgba(24, 22, 35, 1), rgba(25, 23, 37, 1),rgba(13, 11, 20, 1))',
       },
     },
   },
