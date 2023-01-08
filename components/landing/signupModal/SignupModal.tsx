@@ -1,5 +1,10 @@
-import { GoogleIcon, BackdropWrapper, ModalWrapper } from 'components';
-import { TextInput } from 'components';
+import {
+  GoogleIcon,
+  BackdropWrapper,
+  ModalWrapper,
+  TextInput,
+} from 'components';
+
 import useSignupModal from './useSignupModal';
 
 const SignupForm: React.FC = () => {
