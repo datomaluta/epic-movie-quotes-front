@@ -58,7 +58,6 @@ export default function Home() {
         “I see in your eyes the same <br /> fear that would take the <br />
         heart of me....”
       </MoviePoster>
-
       <Footer />
     </div>
   );
