@@ -4,10 +4,10 @@ import { PropsType } from './types';
 const MoviePoster: React.FC<PropsType> = (props) => {
   return (
     <div
-      className={`bg-${props.background} text-white h-screen relative bg-fixed bg-center bg-cover`}
+      className={`${props.background} text-white h-screen relative bg-fixed bg-center bg-cover`}
     >
       <div
-        className={`flex gap-4 sm:gap-2 absolute top-[${props.position}%] left-[9%] sm:left-[5%]`}
+        className={`flex gap-4 sm:gap-2 absolute top-[35%] left-[9%] sm:left-[5%]`}
       >
         <div className='pt-8 sm:hidden'>
           <QuoteLine />

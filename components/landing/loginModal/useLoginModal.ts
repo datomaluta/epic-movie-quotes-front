@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { authActions } from 'store';
+import { useTranslation } from 'react-i18next';
 
 const useLoginModal = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ const useLoginModal = () => {
     dispatch(authActions.setShowForgotPasswordModal());
   };
 
-  return { moveToSignupHandler, showForgotPasswordModalHandler };
+  const { t } = useTranslation();
+
+  return { moveToSignupHandler, showForgotPasswordModalHandler, translate: t };
 };
 
 export default useLoginModal;

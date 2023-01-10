@@ -9,18 +9,16 @@ import {
 import { useShowModals } from 'hooks';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticProps } from 'next';
 
-type PropsType = { _nextI18Next: { initialLocale: string } };
-
-const Home: NextPage<PropsType> = (props) => {
+const Home = () => {
   const { isRegistering, isLogining, showForgotPasswordModal } =
     useShowModals();
   const { t } = useTranslation();
 
   return (
     <div>
-      <LandingNavBar currentLocale={props._nextI18Next.initialLocale} />
+      <LandingNavBar />
       {isRegistering && <SignupModal />}
       {isLogining && <LoginModal />}
       {showForgotPasswordModal && <ForgotPasswordModal />}
@@ -34,8 +32,8 @@ const Home: NextPage<PropsType> = (props) => {
       </div>
 
       <MoviePoster
-        background='interstellar'
-        position='30'
+        background='bg-interstellar'
+        position='top-[30]%'
         movie={t('home:interstellar')}
         year='2014'
       >
@@ -43,8 +41,8 @@ const Home: NextPage<PropsType> = (props) => {
       </MoviePoster>
 
       <MoviePoster
-        background='manAndWoman'
-        position='55'
+        background='bg-manAndWoman'
+        position='top-[55]%'
         movie={t('home:the_royal_tenenbaums')}
         year='2001'
       >
@@ -52,8 +50,8 @@ const Home: NextPage<PropsType> = (props) => {
       </MoviePoster>
 
       <MoviePoster
-        background='lotr'
-        position='55'
+        background='bg-lotr'
+        position='top-[55]%'
         movie={t('home:lotr')}
         year='2003'
       >
@@ -64,10 +62,10 @@ const Home: NextPage<PropsType> = (props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['home', 'common'])),
+      ...(await serverSideTranslations(locale!, ['home', 'common'])),
     },
   };
 };
