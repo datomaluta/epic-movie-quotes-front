@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { authActions } from 'store';
+import { useTranslation } from 'react-i18next';
 
 const useSignupModal = () => {
   const dispatch = useDispatch();
@@ -7,8 +8,9 @@ const useSignupModal = () => {
     dispatch(authActions.hideSignupModal());
     dispatch(authActions.showLoginModal());
   };
+  const { t } = useTranslation();
 
-  return { showLoginFormHandler };
+  return { showLoginFormHandler, translate: t };
 };
 
 export default useSignupModal;

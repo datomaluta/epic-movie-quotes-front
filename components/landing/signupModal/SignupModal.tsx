@@ -8,56 +8,61 @@ import {
 import useSignupModal from './useSignupModal';
 
 const SignupForm: React.FC = () => {
-  const { showLoginFormHandler } = useSignupModal();
+  const { showLoginFormHandler, translate } = useSignupModal();
 
   return (
     <BackdropWrapper>
       <ModalWrapper>
         <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
-          Create an account
+          {translate('common:create_an_account')}
         </h1>
-        <p className='text-light-grey mb-6'>Start your journey!</p>
+        <p className='text-light-grey mb-6'>
+          {translate('common:start_your_journey')}
+        </p>
         <form>
           <TextInput
-            label='Name'
+            label={translate('common:name')}
             type='text'
-            placeholder='At least 3 & max.15 lower case characters'
+            placeholder={translate('common:name_placeholder')}
           />
 
           <TextInput
-            label='Email'
+            label={translate('common:email')}
             type='email'
-            placeholder='Enter your email'
+            placeholder={translate('common:email_placeholder')}
           />
 
           <TextInput
-            label='Password'
+            label={translate('common:password')}
             type='password'
-            placeholder='At least 8 & max.15 lower case characters'
+            placeholder={translate('common:password')}
           />
 
           <TextInput
-            label='Confirm password'
+            label={translate('common:confirm_password')}
             type='password'
-            placeholder='Confirm password'
+            placeholder={translate('common:confirm_password')}
           />
 
           <button className='bg-dark-red py-2 text-white w-[22.5rem] rounded mt-2'>
-            Get Started
+            {translate('common:get_started')}
           </button>
           <button className='border border-very-light-grey rounded  w-[22.5rem] mt-4 flex items-center justify-center gap-2 py-[0.438rem]'>
             <GoogleIcon />
-            <span className='text-white'> Sign up with Google</span>
+            <span className='text-white'>
+              {' '}
+              {translate('common:signup_with_google')}
+            </span>
           </button>
 
           <p className='text-light-grey mt-8 text-center'>
-            Already have an account?
+            {translate('home:already_have_account')}
             <button
               type='submit'
               onClick={showLoginFormHandler}
-              className='text-theme-primary underline cursor-pointer'
+              className='text-theme-primary underline cursor-pointer ml-1'
             >
-              Log in
+              {translate('home:login')}
             </button>
           </p>
         </form>

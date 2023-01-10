@@ -4,30 +4,33 @@ import {
   ModalWrapper,
   TextInput,
 } from 'components';
-
 import useLoginModal from './useLoginModal';
 
 const LoginModal: React.FC = () => {
-  const { moveToSignupHandler, showForgotPasswordModalHandler } =
+  const { moveToSignupHandler, showForgotPasswordModalHandler, translate } =
     useLoginModal();
 
   return (
     <BackdropWrapper>
       <ModalWrapper>
         <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
-          Log in to your account
+          {translate('common:login_to_profile')}
         </h1>
         <p className='text-light-grey mb-6'>
-          Welcome back! Please enter your details.
+          {translate('common:welcome_back')}
         </p>
         <form>
           <TextInput
-            label='Email'
+            label={translate('common:email')}
             type='email'
-            placeholder='Enter your email'
+            placeholder={translate('common:email_placeholder')}
           />
 
-          <TextInput label='Password' type='password' placeholder='Password' />
+          <TextInput
+            label={translate('common:password')}
+            type='password'
+            placeholder={translate('common:password')}
+          />
 
           <div className='flex justify-between items-center mb-2'>
             <div>
@@ -37,7 +40,7 @@ const LoginModal: React.FC = () => {
                 className='inline-block mr-2'
               />
               <label htmlFor='remember' className='text-white'>
-                Remember me
+                {translate('common:remember_me')}
               </label>
             </div>
             <button
@@ -45,25 +48,28 @@ const LoginModal: React.FC = () => {
               type='button'
               className='text-theme-primary underline'
             >
-              Forgot password
+              {translate('common:forgot_password')}
             </button>
           </div>
 
           <button className='bg-dark-red py-2 text-white w-[22.5rem] rounded mt-2'>
-            Sign in
+            {translate('common:sign_in')}
           </button>
           <button className='border border-very-light-grey rounded  w-[22.5rem] mt-4 flex items-center justify-center gap-2 py-[0.438rem]'>
             <GoogleIcon />
-            <span className='text-white'> Sign in with Google</span>
+            <span className='text-white'>
+              {' '}
+              {translate('common:sign_in_with_google')}
+            </span>
           </button>
 
           <p className='text-light-grey mt-8 text-center'>
-            Don&apos;t have an account?
+            {translate('common:dont_have_an_account')}
             <span
               onClick={moveToSignupHandler}
               className='text-theme-primary underline cursor-pointer ml-1'
             >
-              Sign up
+              {translate('common:sign_up')}
             </span>
           </p>
         </form>
