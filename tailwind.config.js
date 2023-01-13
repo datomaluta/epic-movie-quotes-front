@@ -23,6 +23,10 @@ module.exports = {
         'light-grey': '#6C757D',
         'very-light-grey': '#CED4DA',
         'theme-primary': '#0D6EFD',
+        'error-red': '#DC3545',
+        'success-green': '#198754',
+        'error-red-border': '#E31221',
+        'focus-blue': '#a9b5bf',
       },
       fontFamily: {
         'helvetica-eng': 'helvetica-neue',
