@@ -1,0 +1,9 @@
+{
+  "email_format": "This field requires valid email",
+  "field_max_length": "This field must have max 15 symbols",
+  "field_min_length": "This field must have min 3 symbols",
+  "field_required": "This field is required",
+  "only_letters_and_numbers": "Only lowercase letters and numbers",
+  "password_does_not_match": "Your passwords does not match",
+  "password_min_length": "This field must have min 8 symbols"
+}
