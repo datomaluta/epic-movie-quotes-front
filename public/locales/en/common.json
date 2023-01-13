@@ -1,1 +1,22 @@
-{"already_have_account":"Already have an account?","confirm_password":"Confirm password","create_an_account":"Create an account","dont_have_an_account":"Don't have an account?","email":"Email","email_placeholder":"Enter your email","forgot_password":"Forgot Password","get_started":"Get Started","login":"Log in","login_to_profile":"Log in to your account","name":"Name","name_placeholder":"Enter your name","password":"Password","remember_me":"Remember me","sign_in":"Sign in","sign_in_with_google":"Sign in with Google","sign_up":"Sign up","signup_with_google":"Sign up with Google","start_your_journey":"Start your journey","welcome_back":"Welcome back! Please enter your details."}
+{
+  "already_have_account": "Already have an account?",
+  "confirm_password": "Confirm password",
+  "create_an_account": "Create an account",
+  "dont_have_an_account": "Don't have an account?",
+  "email": "Email",
+  "email_placeholder": "Enter your email",
+  "forgot_password": "Forgot Password",
+  "get_started": "Get Started",
+  "login": "Log in",
+  "login_to_profile": "Log in to your account",
+  "name": "Name",
+  "name_placeholder": "Enter your name",
+  "password": "Password",
+  "remember_me": "Remember me",
+  "sign_in": "Sign in",
+  "sign_in_with_google": "Sign in with Google",
+  "sign_up": "Sign up",
+  "signup_with_google": "Sign up with Google",
+  "start_your_journey": "Start your journey",
+  "welcome_back": "Welcome back! Please enter your details."
+}

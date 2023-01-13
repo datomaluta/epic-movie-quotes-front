@@ -8,14 +8,11 @@ export const registerFormValidationSchema = Yup.object({
     .matches(/^[a-z0-9]+$/, {
       message: 'validations:only_letters_and_numbers',
     }),
+
   email: Yup.string()
     .required('validations:field_required')
-    .matches(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      {
-        message: 'validations:email_format',
-      }
-    ),
+    .email('validations:email_format'),
+
   password: Yup.string()
     .required('validations:field_required')
     .min(8, 'validations:password_min_length')
@@ -26,7 +23,5 @@ export const registerFormValidationSchema = Yup.object({
 
   confirm_password: Yup.string()
     .required('validations:field_required')
-    .min(8, 'validations:password_min_length')
-    .max(15, 'validations:field_max_length')
     .oneOf([Yup.ref('password')], 'validations:password_does_not_match'),
 });

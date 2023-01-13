@@ -4,7 +4,6 @@ import {
   ModalWrapper,
   TextInput,
 } from 'components';
-
 import useSignupModal from './useSignupModal';
 import { FormProvider } from 'react-hook-form';
 

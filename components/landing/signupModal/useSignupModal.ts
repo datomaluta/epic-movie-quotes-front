@@ -20,9 +20,7 @@ const useSignupModal = () => {
     defaultValues: { name: '', email: '', password: '', confirm_password: '' },
   });
 
-  const onSubmit = () => {
-    // login on submit
-  };
+  const onSubmit = () => {};
 
   return { showLoginFormHandler, translate: t, form, onSubmit };
 };
