@@ -63,7 +63,7 @@ const SignupForm: React.FC = () => {
             <p className='text-light-grey mt-8 text-center'>
               {translate('common:already_have_account')}
               <button
-                type='submit'
+                type='button'
                 onClick={showLoginFormHandler}
                 className='text-theme-primary underline cursor-pointer ml-1'
               >

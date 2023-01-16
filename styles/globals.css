@@ -7,10 +7,25 @@
     font-style: normal;
 }
 
+
 @font-face {
     font-family: 'helvetica-neue';
     src: url('/assets/fonts/eng/HelveticaNeue-Medium.ttf') format('truetype');
     font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica-neue-geo';
+    src: url('/assets/fonts/geo/Helvetica-normal.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica-neue-geo';
+    src: url('/assets/fonts/geo/Helvetica-bold.ttf') format('truetype');
+    font-weight: 700;
     font-style: normal;
 }
 

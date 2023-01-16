@@ -15,7 +15,11 @@ const MoviePoster: React.FC<PropsType> = (props) => {
         <div className='pt-3 hidden sm:block'>
           <QuoteMiniLine />
         </div>
-        <p className='font-montserrat font-bold text-[3.125rem] sm:text-xl max-w-[49.563rem] sm:max-w-[20.063rem]'>
+        <p
+          className={`${
+            props.locale === 'en' ? 'font-montserrat' : 'font-helvetica-geo'
+          } font-bold text-[3.125rem] sm:text-xl max-w-[49.563rem] sm:max-w-[20.063rem]`}
+        >
           {props.children}
           <span className='block text-3xl sm:text-base mt-2'>
             {props.movie}, {props.year}

@@ -4,4 +4,5 @@ export type PropsType = {
   children: React.ReactNode;
   movie: string;
   year: string;
+  locale: string;
 };

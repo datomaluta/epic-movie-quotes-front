@@ -16,7 +16,11 @@ const LandingNavBar: React.FC = () => {
   return (
     <nav className='flex justify-between items-center py-6 px-[4.375rem] lg:px-8 fixed top-0 left-0 w-full z-10 sm:absolute'>
       <div className='text-dark-yellow font-medium'>MOVIE QUOTES</div>
-      <div className='text-white flex items-center'>
+      <div
+        className={`text-white flex items-center ${
+          router.locale === 'en' ? 'font-helvetica-en' : 'font-helvetica-geo'
+        }  font-helvetica-geo`}
+      >
         <div className='relative'>
           <button
             onClick={showLanguageChanger}
