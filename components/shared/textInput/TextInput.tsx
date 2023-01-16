@@ -1,42 +1,91 @@
 import { PropsType } from './types';
 import { useTextInput } from './useTextInput';
 import { ErrorMessage } from '@hookform/error-message';
-import { InputCorrectIcon, InputErrorIcon } from 'components';
+import {
+  HidePasswordIcon,
+  InputCorrectIcon,
+  InputErrorIcon,
+  ShowPasswordIcon,
+} from 'components';
 
 const TextInput: React.FC<PropsType> = (props) => {
-  const { form, t, isInValid, isDirty } = useTextInput(props.name);
+  const {
+    form,
+    t,
+    isInValid,
+    isDirty,
+    inputRef,
+    passwordShowClickHandler,
+    passwordFieldType,
+  } = useTextInput(props.name);
+
+  const { ref, ...rest } = form.register(props.name);
 
   return (
-    <div className='mb-4'>
+    <div className={`mb-4 ${props.className}`}>
       <label className='text-white mb-2 block'>
         {props.label}
         <span className='text-red-danger inline-block ml-1'>*</span>
       </label>
       <div className='relative'>
         <input
-          {...form.register(props.name)}
+          {...rest}
+          ref={(e) => {
+            ref(e);
+            inputRef.current = e;
+          }}
           type={props.type}
           placeholder={props.placeholder}
           className={`${
             isInValid ? 'border-error-red-border' : 'border-transparent'
           } ${
             !isInValid && isDirty && 'border-success-green'
-          } py-2 px-3 w-[22.5rem] block placeholder:text-light-grey rounded
-          bg-very-light-grey outline-none border-2 focus:border-focus-blue`}
+          }  py-2 px-2 w-[22.5rem] block placeholder:text-light-grey placeholder rounded
+          bg-very-light-grey outline-none border-2 focus:border-focus-blue pr-13`}
         />
         {isInValid && (
-          <div className='absolute top-1/2 right-4 -translate-y-1/2'>
+          <div
+            className={`absolute top-1/2 ${
+              props.type === 'password' ? 'right-8' : 'right-4'
+            } -translate-y-1/2`}
+          >
             <InputErrorIcon />
           </div>
         )}
         {!isInValid && isDirty && (
-          <div className='absolute top-1/2 right-4 -translate-y-1/2'>
+          <div
+            className={`absolute top-1/2  ${
+              props.type === 'password' ? 'right-9' : 'right-4'
+            } -translate-y-1/2`}
+          >
             <InputCorrectIcon />
           </div>
         )}
+        {props.type === 'password' && (
+          <>
+            {passwordFieldType === 'password' && (
+              <button
+                type='button'
+                onClick={passwordShowClickHandler}
+                className='absolute top-1/2 right-2 -translate-y-1/2'
+              >
+                <ShowPasswordIcon />
+              </button>
+            )}
+            {passwordFieldType === 'text' && (
+              <button
+                type='button'
+                onClick={passwordShowClickHandler}
+                className='absolute top-1/2 right-2 -translate-y-1/2'
+              >
+                <HidePasswordIcon />
+              </button>
+            )}
+          </>
+        )}
       </div>
 
-      <div className='text-error-red text-sm h-2 mt-1'>
+      <div className='text-error-red text-sm h-1 mt-1'>
         <ErrorMessage
           errors={form.formState.errors}
           name={props.name}

@@ -15,7 +15,7 @@ const useSignupModal = () => {
   const { t } = useTranslation();
 
   const form = useForm<FormInputs>({
-    mode: 'onChange',
+    mode: 'all',
     resolver: yupResolver(registerFormValidationSchema),
     defaultValues: { name: '', email: '', password: '', confirm_password: '' },
   });

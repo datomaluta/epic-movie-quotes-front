@@ -25,3 +25,10 @@ export const registerFormValidationSchema = Yup.object({
     .required('validations:field_required')
     .oneOf([Yup.ref('password')], 'validations:password_does_not_match'),
 });
+
+export const loginFormValidationSchema = Yup.object({
+  email_username: Yup.string()
+    .required('validations:field_required')
+    .min(3, 'validations:field_min_length'),
+  password: Yup.string().required('validations:field_required'),
+});

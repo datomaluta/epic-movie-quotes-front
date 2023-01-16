@@ -1,6 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { authActions } from 'store';
 import { useTranslation } from 'react-i18next';
+import { FormInputs } from './types';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginFormValidationSchema } from 'schemas';
 
 const useLoginModal = () => {
   const dispatch = useDispatch();
@@ -16,7 +20,21 @@ const useLoginModal = () => {
 
   const { t } = useTranslation();
 
-  return { moveToSignupHandler, showForgotPasswordModalHandler, translate: t };
+  const form = useForm<FormInputs>({
+    mode: 'onChange',
+    resolver: yupResolver(loginFormValidationSchema),
+    defaultValues: { name: '', email: '', password: '', confirm_password: '' },
+  });
+
+  const onSubmit = () => {};
+
+  return {
+    moveToSignupHandler,
+    showForgotPasswordModalHandler,
+    translate: t,
+    form,
+    onSubmit,
+  };
 };
 
 export default useLoginModal;

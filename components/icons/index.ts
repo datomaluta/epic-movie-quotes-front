@@ -5,3 +5,5 @@ export { default as GoogleIcon } from './GoogleIcon';
 export { default as BackArrowIcon } from './BackArrowIcon';
 export { default as InputErrorIcon } from './InputErrorIcon';
 export { default as InputCorrectIcon } from './InputCorrectIcon';
+export { default as ShowPasswordIcon } from './ShowPasswordIcon';
+export { default as HidePasswordIcon } from './HidePasswordIcon';

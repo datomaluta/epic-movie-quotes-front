@@ -30,6 +30,7 @@ module.exports = {
       },
       fontFamily: {
         'helvetica-eng': 'helvetica-neue',
+        'helvetica-geo': 'helvetica-neue-geo',
         montserrat: "'Montserrat', helvetica-neue",
       },
       backgroundImage: {
