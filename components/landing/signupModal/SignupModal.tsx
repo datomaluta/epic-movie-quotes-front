@@ -26,14 +26,6 @@ const SignupForm: React.FC = () => {
               type='text'
               placeholder={translate('common:name_placeholder')}
               name='name'
-              className='hidden xl:block'
-            />
-            <TextInput
-              label={translate('common:name')}
-              type='text'
-              placeholder={translate('common:name_big_placeholder')}
-              name='name'
-              className='xl:hidden'
             />
 
             <TextInput
@@ -48,14 +40,6 @@ const SignupForm: React.FC = () => {
               type='password'
               placeholder={translate('common:password')}
               name='password'
-              className='hidden xl:block'
-            />
-            <TextInput
-              label={translate('common:password')}
-              type='password'
-              placeholder={translate('common:password_big_placeholder')}
-              name='password'
-              className='xl:hidden'
             />
 
             <TextInput

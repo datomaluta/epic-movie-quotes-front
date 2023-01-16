@@ -21,6 +21,8 @@ export const useTextInput = (name: string) => {
     control: form.control,
   });
 
+  const { ref, ...rest } = form.register(name);
+
   return {
     form,
     t,
@@ -29,5 +31,7 @@ export const useTextInput = (name: string) => {
     inputRef,
     passwordShowClickHandler,
     passwordFieldType,
+    ref,
+    rest,
   };
 };

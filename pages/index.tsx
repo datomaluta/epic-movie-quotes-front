@@ -9,9 +9,10 @@ import {
 import { useShowModals } from 'hooks';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
+import { IndexPropsType } from 'types';
 
-const Home = (props: { locale: string }) => {
+const Home: NextPage<IndexPropsType> = (props) => {
   const { isRegistering, isLogining, showForgotPasswordModal } =
     useShowModals();
   const { t } = useTranslation();

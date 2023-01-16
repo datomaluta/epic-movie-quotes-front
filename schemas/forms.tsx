@@ -30,5 +30,7 @@ export const loginFormValidationSchema = Yup.object({
   email_username: Yup.string()
     .required('validations:field_required')
     .min(3, 'validations:field_min_length'),
-  password: Yup.string().required('validations:field_required'),
+  password: Yup.string()
+    .required('validations:field_required')
+    .min(3, 'validations:field_min_length'),
 });

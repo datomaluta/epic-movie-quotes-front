@@ -21,9 +21,9 @@ const useLoginModal = () => {
   const { t } = useTranslation();
 
   const form = useForm<FormInputs>({
-    mode: 'onChange',
+    mode: 'all',
     resolver: yupResolver(loginFormValidationSchema),
-    defaultValues: { name: '', email: '', password: '', confirm_password: '' },
+    defaultValues: { email: '', password: '' },
   });
 
   const onSubmit = () => {};

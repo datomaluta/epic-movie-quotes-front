@@ -17,12 +17,12 @@ const TextInput: React.FC<PropsType> = (props) => {
     inputRef,
     passwordShowClickHandler,
     passwordFieldType,
+    ref,
+    rest,
   } = useTextInput(props.name);
 
-  const { ref, ...rest } = form.register(props.name);
-
   return (
-    <div className={`mb-4 ${props.className}`}>
+    <div className='mb-4'>
       <label className='text-white mb-2 block'>
         {props.label}
         <span className='text-red-danger inline-block ml-1'>*</span>
@@ -62,26 +62,17 @@ const TextInput: React.FC<PropsType> = (props) => {
           </div>
         )}
         {props.type === 'password' && (
-          <>
-            {passwordFieldType === 'password' && (
-              <button
-                type='button'
-                onClick={passwordShowClickHandler}
-                className='absolute top-1/2 right-2 -translate-y-1/2'
-              >
-                <ShowPasswordIcon />
-              </button>
+          <button
+            type='button'
+            onClick={passwordShowClickHandler}
+            className='absolute top-1/2 right-2 -translate-y-1/2'
+          >
+            {passwordFieldType === 'password' ? (
+              <ShowPasswordIcon />
+            ) : (
+              <HidePasswordIcon />
             )}
-            {passwordFieldType === 'text' && (
-              <button
-                type='button'
-                onClick={passwordShowClickHandler}
-                className='absolute top-1/2 right-2 -translate-y-1/2'
-              >
-                <HidePasswordIcon />
-              </button>
-            )}
-          </>
+          </button>
         )}
       </div>
 

@@ -3,5 +3,4 @@ export type PropsType = {
   type: string;
   placeholder: string;
   name: string;
-  className?: string;
 };
