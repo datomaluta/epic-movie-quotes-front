@@ -7,3 +7,4 @@ export { default as InputErrorIcon } from './InputErrorIcon';
 export { default as InputCorrectIcon } from './InputCorrectIcon';
 export { default as ShowPasswordIcon } from './ShowPasswordIcon';
 export { default as HidePasswordIcon } from './HidePasswordIcon';
+export { default as EmailSendCheckIcon } from './EmailSendCheckIcon';

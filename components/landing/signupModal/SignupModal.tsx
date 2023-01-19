@@ -8,7 +8,8 @@ import useSignupModal from './useSignupModal';
 import { FormProvider } from 'react-hook-form';
 
 const SignupForm: React.FC = () => {
-  const { showLoginFormHandler, translate, form, onSubmit } = useSignupModal();
+  const { showLoginFormHandler, translate, form, onSubmit, errors } =
+    useSignupModal();
 
   return (
     <FormProvider {...form}>
@@ -26,6 +27,7 @@ const SignupForm: React.FC = () => {
               type='text'
               placeholder={translate('common:name_placeholder')}
               name='name'
+              error={errors?.name}
             />
 
             <TextInput

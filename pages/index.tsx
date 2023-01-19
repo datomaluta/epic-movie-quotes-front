@@ -5,6 +5,7 @@ import {
   SignupModal,
   LoginModal,
   ForgotPasswordModal,
+  ConfirmEmailModal,
 } from 'components';
 import { useShowModals } from 'hooks';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -13,8 +14,12 @@ import { GetStaticProps, NextPage } from 'next';
 import { IndexPropsType } from 'types';
 
 const Home: NextPage<IndexPropsType> = (props) => {
-  const { isRegistering, isLogining, showForgotPasswordModal } =
-    useShowModals();
+  const {
+    isRegistering,
+    isLogining,
+    showForgotPasswordModal,
+    showConfirmEmailSentModal,
+  } = useShowModals();
   const { t } = useTranslation();
 
   return (
@@ -23,6 +28,7 @@ const Home: NextPage<IndexPropsType> = (props) => {
       {isRegistering && <SignupModal />}
       {isLogining && <LoginModal />}
       {showForgotPasswordModal && <ForgotPasswordModal />}
+      {showConfirmEmailSentModal && <ConfirmEmailModal />}
       <div className='text-center h-[50.5rem] bg-gradient-to-t from-gradient-dark via-gradient-almost-black to-black  flex flex-col items-center justify-center'>
         <h1
           className={`${

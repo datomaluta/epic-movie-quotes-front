@@ -41,6 +41,8 @@ module.exports = {
         lotr: "linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),url('/assets/images/lotr.png')",
         'signup-gradient':
           'linear-gradient(to bottom, rgba(24, 22, 35, 1), rgba(25, 23, 37, 1),rgba(13, 11, 20, 1))',
+        'email-modal':
+          'linear-gradient(112.94deg, rgba(239, 239, 239, 0.1) -1.81%, rgba(239, 239, 239, 0.00514528) 102.5%, rgba(1, 1, 1, 0.00260417) 102.51%, rgba(239, 239, 239, 0.1) 102.52%)',
       },
     },
   },

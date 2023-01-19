@@ -5,6 +5,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormValidationSchema } from 'schemas';
 import { FormInputs } from './types';
+import { getRegisterRequest } from 'services';
+import { useState } from 'react';
+import { useMutation } from 'react-query';
 
 const useSignupModal = () => {
   const dispatch = useDispatch();
@@ -12,7 +15,9 @@ const useSignupModal = () => {
     dispatch(authActions.hideSignupModal());
     dispatch(authActions.showLoginModal());
   };
+
   const { t } = useTranslation();
+  const [errors, setErrors] = useState<null>();
 
   const form = useForm<FormInputs>({
     mode: 'all',
@@ -20,9 +25,22 @@ const useSignupModal = () => {
     defaultValues: { name: '', email: '', password: '', confirm_password: '' },
   });
 
-  const onSubmit = () => {};
+  const { mutate } = useMutation(getRegisterRequest, {
+    onSuccess: () => {
+      setErrors(null);
+      dispatch(authActions.setShowConfirmEmailSendModal());
+    },
+  });
 
-  return { showLoginFormHandler, translate: t, form, onSubmit };
+  const onSubmit = async (data: FormInputs) => {
+    mutate(data, {
+      onError: (error: any) => {
+        setErrors(error.response.data.errors);
+      },
+    });
+  };
+
+  return { showLoginFormHandler, translate: t, form, onSubmit, errors };
 };
 
 export default useSignupModal;

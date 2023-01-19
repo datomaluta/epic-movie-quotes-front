@@ -82,6 +82,7 @@ const TextInput: React.FC<PropsType> = (props) => {
           name={props.name}
           render={({ message }) => <p>{t(message)}</p>}
         />
+        <p>{props.error}</p>
       </div>
     </div>
   );

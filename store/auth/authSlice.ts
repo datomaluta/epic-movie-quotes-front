@@ -5,6 +5,7 @@ const initialState: SliceStateType = {
   isRegistering: false,
   isLogining: false,
   showForgotPasswordModal: false,
+  showConfirmEmailSentModal: false,
 };
 
 const authSlice = createSlice({
@@ -33,6 +34,13 @@ const authSlice = createSlice({
     setBackToLoginModal(state) {
       state.showForgotPasswordModal = false;
       state.isLogining = true;
+    },
+    setShowConfirmEmailSendModal(state) {
+      state.showConfirmEmailSentModal = true;
+      state.isRegistering = false;
+    },
+    hideConfirmEmailSentModal(state) {
+      state.showConfirmEmailSentModal = false;
     },
   },
 });
