@@ -17,7 +17,7 @@ const useSignupModal = () => {
   };
 
   const { t } = useTranslation();
-  const [errors, setErrors] = useState<null>();
+  const [errors, setErrors] = useState<{}>();
 
   const form = useForm<FormInputs>({
     mode: 'all',
@@ -27,7 +27,7 @@ const useSignupModal = () => {
 
   const { mutate } = useMutation(getRegisterRequest, {
     onSuccess: () => {
-      setErrors(null);
+      setErrors(undefined);
       dispatch(authActions.setShowConfirmEmailSendModal());
     },
   });
@@ -35,7 +35,7 @@ const useSignupModal = () => {
   const onSubmit = async (data: FormInputs) => {
     mutate(data, {
       onError: (error: any) => {
-        setErrors(error.response.data.errors);
+        setErrors(error?.response?.data?.errors);
       },
     });
   };
