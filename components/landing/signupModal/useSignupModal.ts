@@ -17,7 +17,7 @@ const useSignupModal = () => {
   };
 
   const { t } = useTranslation();
-  const [errors, setErrors] = useState<{}>();
+  const [errors, setErrors] = useState({});
 
   const form = useForm<FormInputs>({
     mode: 'all',
@@ -27,7 +27,6 @@ const useSignupModal = () => {
 
   const { mutate } = useMutation(getRegisterRequest, {
     onSuccess: () => {
-      setErrors(undefined);
       dispatch(authActions.setShowConfirmEmailSendModal());
     },
   });
