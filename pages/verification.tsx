@@ -1,4 +1,4 @@
-import useVerifyEmail from 'hooks/useVerifyEmail'
+import { useVerifyEmail } from 'hooks'
 
 const Verification = () => {
   useVerifyEmail()

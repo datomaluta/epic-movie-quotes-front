@@ -10,7 +10,8 @@ const useVerifyEmail = () => {
 
   useEffect(() => {
     if (router.query.verify_url) {
-      getEmailVerifyRequest(router.query.verify_url)
+      console.log(router.query.verify_url.toString())
+      getEmailVerifyRequest(router.query.verify_url.toString())
       dispatch(authActions.setShowVerifiedEmailModal())
       router.replace('/', undefined, { shallow: true })
     }

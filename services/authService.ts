@@ -8,6 +8,6 @@ export const getRegisterRequest = (
   return axios.post('/api/register', data)
 }
 
-export const getEmailVerifyRequest = (url: any) => {
+export const getEmailVerifyRequest = (url: string) => {
   return axios.get(`/api/${url}`)
 }
