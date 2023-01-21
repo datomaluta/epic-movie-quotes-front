@@ -1,6 +1,6 @@
-import { BackdropWrapper, EmailSendCheckIcon, ModalWrapper } from 'components'
+import { BackdropWrapper, ModalWrapper, EmailSendCheckIcon } from 'components'
 
-const ConfirmEmailModal: React.FC = () => {
+const VerifiedEmailModal: React.FC = () => {
   return (
     <BackdropWrapper>
       <ModalWrapper>
@@ -10,11 +10,10 @@ const ConfirmEmailModal: React.FC = () => {
             Thank you!
           </h1>
           <p className='text-white text-center mb-10 sm:mb-6'>
-            Please check your email and follow the instructions to activate your
-            account.
+            Your account has been activated
           </p>
           <button className='rounded bg-dark-red w-[22.5rem] sm:w-[11.875rem] sm py-2 text-white'>
-            Go To my email
+            Go To my news feed
           </button>
         </div>
       </ModalWrapper>
@@ -22,4 +21,4 @@ const ConfirmEmailModal: React.FC = () => {
   )
 }
 
-export default ConfirmEmailModal
+export default VerifiedEmailModal

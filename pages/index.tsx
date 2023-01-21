@@ -6,12 +6,13 @@ import {
   LoginModal,
   ForgotPasswordModal,
   ConfirmEmailModal,
-} from 'components';
-import { useShowModals } from 'hooks';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import { GetStaticProps, NextPage } from 'next';
-import { IndexPropsType } from 'types';
+  VerifiedEmailModal,
+} from 'components'
+import { useShowModals } from 'hooks'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+import { GetStaticProps, NextPage } from 'next'
+import { IndexPropsType } from 'types'
 
 const Home: NextPage<IndexPropsType> = (props) => {
   const {
@@ -19,8 +20,9 @@ const Home: NextPage<IndexPropsType> = (props) => {
     isLogining,
     showForgotPasswordModal,
     showConfirmEmailSentModal,
-  } = useShowModals();
-  const { t } = useTranslation();
+    showVerifiedEmailModal,
+  } = useShowModals()
+  const { t } = useTranslation()
 
   return (
     <div>
@@ -29,6 +31,7 @@ const Home: NextPage<IndexPropsType> = (props) => {
       {isLogining && <LoginModal />}
       {showForgotPasswordModal && <ForgotPasswordModal />}
       {showConfirmEmailSentModal && <ConfirmEmailModal />}
+      {showVerifiedEmailModal && <VerifiedEmailModal />}
       <div className='text-center h-[50.5rem] bg-gradient-to-t from-gradient-dark via-gradient-almost-black to-black  flex flex-col items-center justify-center'>
         <h1
           className={`${
@@ -77,8 +80,8 @@ const Home: NextPage<IndexPropsType> = (props) => {
       </MoviePoster>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -90,7 +93,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       ])),
       locale,
     },
-  };
-};
+  }
+}
 
-export default Home;
+export default Home
