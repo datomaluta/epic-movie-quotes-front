@@ -1,49 +1,53 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { SliceStateType } from './types';
+import { createSlice } from '@reduxjs/toolkit'
+import { SliceStateType } from './types'
 
 const initialState: SliceStateType = {
   isRegistering: false,
   isLogining: false,
   showForgotPasswordModal: false,
   showConfirmEmailSentModal: false,
-};
+  showVerifiedEmailModal: false,
+}
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     showSignupModal(state) {
-      state.isRegistering = true;
+      state.isRegistering = true
     },
     hideSignupModal(state) {
-      state.isRegistering = false;
+      state.isRegistering = false
     },
     showLoginModal(state) {
-      state.isLogining = true;
+      state.isLogining = true
     },
     hideLoginModal(state) {
-      state.isLogining = false;
+      state.isLogining = false
     },
     setShowForgotPasswordModal(state) {
-      state.isLogining = false;
-      state.showForgotPasswordModal = true;
+      state.isLogining = false
+      state.showForgotPasswordModal = true
     },
     setHideForgotPasswordModal(state) {
-      state.showForgotPasswordModal = false;
+      state.showForgotPasswordModal = false
     },
     setBackToLoginModal(state) {
-      state.showForgotPasswordModal = false;
-      state.isLogining = true;
+      state.showForgotPasswordModal = false
+      state.isLogining = true
     },
     setShowConfirmEmailSendModal(state) {
-      state.showConfirmEmailSentModal = true;
-      state.isRegistering = false;
+      state.showConfirmEmailSentModal = true
+      state.isRegistering = false
     },
     hideConfirmEmailSentModal(state) {
-      state.showConfirmEmailSentModal = false;
+      state.showConfirmEmailSentModal = false
+    },
+    setShowVerifiedEmailModal(state) {
+      state.showVerifiedEmailModal = true
     },
   },
-});
+})
 
-export const authActions = authSlice.actions;
-export default authSlice;
+export const authActions = authSlice.actions
+export default authSlice

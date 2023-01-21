@@ -1,1 +1,2 @@
-export { default as useShowModals } from './useShowModals';
+export { default as useShowModals } from './useShowModals'
+export { default as useVerifyEmail } from './useVerifyEmail'

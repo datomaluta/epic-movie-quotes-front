@@ -1,6 +1,7 @@
 export type SliceStateType = {
-  isRegistering: boolean;
-  isLogining: boolean;
-  showForgotPasswordModal: boolean;
-  showConfirmEmailSentModal: boolean;
-};
+  isRegistering: boolean
+  isLogining: boolean
+  showForgotPasswordModal: boolean
+  showConfirmEmailSentModal: boolean
+  showVerifiedEmailModal: boolean
+}

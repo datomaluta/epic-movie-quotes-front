@@ -3,18 +3,19 @@ import {
   BackdropWrapper,
   ModalWrapper,
   TextInput,
-} from 'components';
-import useSignupModal from './useSignupModal';
-import { FormProvider } from 'react-hook-form';
+} from 'components'
+import useSignupModal from './useSignupModal'
+import { FormProvider } from 'react-hook-form'
 
 const SignupForm: React.FC = () => {
-  const { showLoginFormHandler, translate, form, onSubmit, errors } =
-    useSignupModal();
+  const { showLoginFormHandler, translate, form, onSubmit, errors, isLoading } =
+    useSignupModal()
 
   return (
     <FormProvider {...form}>
       <BackdropWrapper>
         <ModalWrapper>
+          {isLoading && <h1 className='text-red text-2xl'>Loading...</h1>}
           <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
             {translate('common:create_an_account')}
           </h1>
@@ -76,7 +77,7 @@ const SignupForm: React.FC = () => {
         </ModalWrapper>
       </BackdropWrapper>
     </FormProvider>
-  );
-};
+  )
+}
 
-export default SignupForm;
+export default SignupForm
