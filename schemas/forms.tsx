@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 
 export const registerFormValidationSchema = Yup.object({
   name: Yup.string()
@@ -24,7 +24,7 @@ export const registerFormValidationSchema = Yup.object({
   confirm_password: Yup.string()
     .required('validations:field_required')
     .oneOf([Yup.ref('password')], 'validations:password_does_not_match'),
-});
+})
 
 export const loginFormValidationSchema = Yup.object({
   email_username: Yup.string()
@@ -33,4 +33,4 @@ export const loginFormValidationSchema = Yup.object({
   password: Yup.string()
     .required('validations:field_required')
     .min(3, 'validations:field_min_length'),
-});
+})

@@ -3,9 +3,9 @@ import {
   BackdropWrapper,
   ModalWrapper,
   TextInput,
-} from 'components';
-import { FormProvider } from 'react-hook-form';
-import useLoginModal from './useLoginModal';
+} from 'components'
+import { FormProvider } from 'react-hook-form'
+import useLoginModal from './useLoginModal'
 
 const LoginModal: React.FC = () => {
   const {
@@ -14,7 +14,8 @@ const LoginModal: React.FC = () => {
     translate,
     form,
     onSubmit,
-  } = useLoginModal();
+    error,
+  } = useLoginModal()
 
   return (
     <FormProvider {...form}>
@@ -32,6 +33,7 @@ const LoginModal: React.FC = () => {
               label={translate('common:email')}
               type='text'
               placeholder={translate('common:email_placeholder')}
+              error={error}
             />
 
             <TextInput
@@ -88,7 +90,7 @@ const LoginModal: React.FC = () => {
         </ModalWrapper>
       </BackdropWrapper>
     </FormProvider>
-  );
-};
+  )
+}
 
-export default LoginModal;
+export default LoginModal
