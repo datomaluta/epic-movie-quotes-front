@@ -1,30 +1,25 @@
 import { AxiosResponse } from 'axios'
-import { RegisterForm } from 'types'
-import { LoginForm } from 'types/loginFormFields'
+import { LoginFormFields, RegisterFormFields } from 'types'
 import instance from './axios'
-import axios from './axios'
 
 export const getRegisterRequest = (
-  data: RegisterForm
+  data: RegisterFormFields
 ): Promise<AxiosResponse<{}>> => {
   return instance.post('/api/register', data)
 }
 
 export const getEmailVerifyRequest = (url: string) => {
-  return axios.get(`/api/${url}`)
+  return instance.get(`/api/${url}`)
 }
 
 export const fetchCSRFToken = async () => {
-  const response = await instance.get('/sanctum/csrf-cookie')
-  return response
+  return await instance.get('/sanctum/csrf-cookie')
 }
 
-export const login = async (data: LoginForm) => {
-  const response = await instance.post('/api/login', data)
-  return response
+export const login = async (data: LoginFormFields) => {
+  return await instance.post('/api/login', data)
 }
 
 export const logout = async () => {
-  const response = await instance.get('/api/logout')
-  return response
+  return await instance.get('/api/logout')
 }

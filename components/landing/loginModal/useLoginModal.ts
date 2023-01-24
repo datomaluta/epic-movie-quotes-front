@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { authActions } from 'store'
 import { useTranslation } from 'react-i18next'
-import { FormInputs } from './types'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginFormValidationSchema } from 'schemas'
@@ -9,6 +8,8 @@ import { useRouter } from 'next/router'
 import { fetchCSRFToken, login } from 'services'
 import { useState } from 'react'
 import { deleteCookie } from 'cookies-next'
+import { LoginFormFields } from 'types'
+import { useMutation } from 'react-query'
 
 const useLoginModal = () => {
   const router = useRouter()
@@ -26,21 +27,26 @@ const useLoginModal = () => {
 
   const { t } = useTranslation()
 
-  const form = useForm<FormInputs>({
+  const form = useForm<LoginFormFields>({
     mode: 'all',
     resolver: yupResolver(loginFormValidationSchema),
     defaultValues: { email_username: '', password: '' },
   })
 
-  const onSubmit = async (data: FormInputs) => {
-    try {
-      await fetchCSRFToken()
-      await login(data)
+  const { mutate } = useMutation(login, {
+    onSuccess: () => {
       router.push('/news-feed')
-    } catch (error: any) {
-      deleteCookie('XSRF-TOKEN')
-      setError(error?.response?.data?.message)
-    }
+    },
+  })
+
+  const onSubmit = async (data: LoginFormFields) => {
+    await fetchCSRFToken()
+    mutate(data, {
+      onError: (error: any) => {
+        deleteCookie('XSRF-TOKEN')
+        setError(error?.response?.data?.message)
+      },
+    })
   }
 
   return {

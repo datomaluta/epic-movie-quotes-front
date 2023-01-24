@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { registerFormValidationSchema } from 'schemas'
-import { FormInputs } from './types'
 import { getRegisterRequest } from 'services'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
+import { RegisterFormFields } from 'types'
 
 const useSignupModal = () => {
   const dispatch = useDispatch()
@@ -19,7 +19,7 @@ const useSignupModal = () => {
   const { t } = useTranslation()
   const [errors, setErrors] = useState({ name: '' })
 
-  const form = useForm<FormInputs>({
+  const form = useForm<RegisterFormFields>({
     mode: 'all',
     resolver: yupResolver(registerFormValidationSchema),
     defaultValues: { name: '', email: '', password: '', confirm_password: '' },
@@ -31,7 +31,7 @@ const useSignupModal = () => {
     },
   })
 
-  const onSubmit = async (data: FormInputs) => {
+  const onSubmit = async (data: RegisterFormFields) => {
     mutate(data, {
       onError: (error: any) => {
         setErrors(error?.response?.data?.errors)

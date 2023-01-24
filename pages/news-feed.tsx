@@ -1,14 +1,7 @@
-import { deleteCookie } from 'cookies-next'
-import { useRouter } from 'next/router'
-import { logout } from 'services'
+import { useLogout } from 'hooks'
 
 const NewsFeed = () => {
-  const router = useRouter()
-  const logoutHandler = async () => {
-    await logout()
-    deleteCookie('XSRF-TOKEN')
-    router.reload()
-  }
+  const { logoutHandler } = useLogout()
   return (
     <div>
       <div>This is NewsFeed page</div>
