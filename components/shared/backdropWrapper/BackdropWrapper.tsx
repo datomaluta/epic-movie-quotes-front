@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import { PropsType } from './types';
-import useModalWrapper from './useModalWrapper';
+import { PropsType } from './types'
+import useModalWrapper from './useModalWrapper'
 
 const BackdropWrapper: React.FC<PropsType> = (props) => {
-  const { hideModals } = useModalWrapper();
+  const { hideModals } = useModalWrapper()
 
   return (
     <div className='fixed w-full h-screen left-0 top-0 z-50'>
@@ -14,7 +14,7 @@ const BackdropWrapper: React.FC<PropsType> = (props) => {
       ></div>
       {props.children}
     </div>
-  );
-};
+  )
+}
 
-export default BackdropWrapper;
+export default BackdropWrapper

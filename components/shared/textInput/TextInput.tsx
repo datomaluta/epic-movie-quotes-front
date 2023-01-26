@@ -1,12 +1,12 @@
-import { PropsType } from './types';
-import { useTextInput } from './useTextInput';
-import { ErrorMessage } from '@hookform/error-message';
+import { PropsType } from './types'
+import { useTextInput } from './useTextInput'
+import { ErrorMessage } from '@hookform/error-message'
 import {
   HidePasswordIcon,
   InputCorrectIcon,
   InputErrorIcon,
   ShowPasswordIcon,
-} from 'components';
+} from 'components'
 
 const TextInput: React.FC<PropsType> = (props) => {
   const {
@@ -19,7 +19,7 @@ const TextInput: React.FC<PropsType> = (props) => {
     passwordFieldType,
     ref,
     rest,
-  } = useTextInput(props.name);
+  } = useTextInput(props.name)
 
   return (
     <div className='mb-4'>
@@ -31,8 +31,8 @@ const TextInput: React.FC<PropsType> = (props) => {
         <input
           {...rest}
           ref={(e) => {
-            ref(e);
-            inputRef.current = e;
+            ref(e)
+            inputRef.current = e
           }}
           type={props.type}
           placeholder={props.placeholder}
@@ -85,7 +85,7 @@ const TextInput: React.FC<PropsType> = (props) => {
         <p>{props.error}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TextInput;
+export default TextInput

@@ -1,3 +1,3 @@
 export type PropsType = {
-  currentLocale?: string
+  type: string
 }

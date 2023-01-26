@@ -1,16 +1,19 @@
-import { useDispatch } from 'react-redux';
-import { authActions } from 'store';
+import { useDispatch } from 'react-redux'
+import { authActions } from 'store'
 
 const useModalWrapper = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const hideModals = () => {
-    dispatch(authActions.hideSignupModal());
-    dispatch(authActions.hideLoginModal());
-    dispatch(authActions.setHideForgotPasswordModal());
-    dispatch(authActions.hideConfirmEmailSentModal());
-  };
+    dispatch(authActions.hideSignupModal())
+    dispatch(authActions.hideLoginModal())
+    dispatch(authActions.setHideForgotPasswordModal())
+    dispatch(authActions.hideConfirmEmailSentModal())
+    dispatch(authActions.hideShowForgotPasswordEmailModal())
+    dispatch(authActions.hideNewPasswordModal())
+    dispatch(authActions.hidePasswordChangedModal())
+  }
 
-  return { hideModals };
-};
+  return { hideModals }
+}
 
-export default useModalWrapper;
+export default useModalWrapper

@@ -13,3 +13,17 @@ export type RegisterFormFields = {
   password: string
   confirm_password: string
 }
+
+export type ForgotPasswordField = {
+  email: string
+}
+
+export type NewPasswordFormFields = {
+  password: string
+  confirm_password: string
+}
+
+export type NewPasswordMutationParams = {
+  token: string
+  data: NewPasswordFormFields
+}

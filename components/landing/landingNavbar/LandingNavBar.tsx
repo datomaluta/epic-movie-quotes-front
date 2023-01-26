@@ -1,6 +1,6 @@
-import { LangSwitch } from 'components';
-import { NoSSR } from 'components';
-import useLandingNavBar from './useLandingNavBar';
+import { LangSwitch, NoSSR } from 'components'
+
+import useLandingNavBar from './useLandingNavBar'
 
 const LandingNavBar: React.FC = () => {
   const {
@@ -11,7 +11,7 @@ const LandingNavBar: React.FC = () => {
     languageChanging,
     t,
     router,
-  } = useLandingNavBar();
+  } = useLandingNavBar()
 
   return (
     <nav className='flex justify-between items-center py-6 px-[4.375rem] lg:px-8 fixed top-0 left-0 w-full z-10 sm:absolute'>
@@ -63,7 +63,7 @@ const LandingNavBar: React.FC = () => {
         </NoSSR>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default LandingNavBar;
+export default LandingNavBar

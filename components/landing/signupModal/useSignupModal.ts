@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { registerFormValidationSchema } from 'schemas'
-import { getRegisterRequest } from 'services'
+import { fetchCSRFToken, getRegisterRequest } from 'services'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { RegisterFormFields } from 'types'
@@ -32,6 +32,7 @@ const useSignupModal = () => {
   })
 
   const onSubmit = async (data: RegisterFormFields) => {
+    await fetchCSRFToken()
     mutate(data, {
       onError: (error: any) => {
         setErrors(error?.response?.data?.errors)

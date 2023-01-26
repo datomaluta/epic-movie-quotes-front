@@ -1,31 +1,31 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { authActions } from 'store';
-import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { authActions } from 'store'
+import { useTranslation } from 'react-i18next'
 
 const useLandingNavBar = () => {
-  const { t } = useTranslation();
-  const router = useRouter();
-  const dispatch = useDispatch();
+  const { t } = useTranslation()
+  const router = useRouter()
+  const dispatch = useDispatch()
   const showSignupModalHandler = () => {
-    dispatch(authActions.showSignupModal());
-  };
+    dispatch(authActions.showSignupModal())
+  }
   const showLoginModalHandler = () => {
-    dispatch(authActions.showLoginModal());
-  };
+    dispatch(authActions.showLoginModal())
+  }
 
-  const [languageChanging, setLanguageChanging] = useState(false);
-  const { replace, pathname } = useRouter();
+  const [languageChanging, setLanguageChanging] = useState(false)
+  const { replace, pathname } = useRouter()
 
   const showLanguageChanger = () => {
-    setLanguageChanging((prevState) => !prevState);
-  };
+    setLanguageChanging((prevState) => !prevState)
+  }
 
   const setLocaleHandler = (language: string) => {
-    replace(pathname, pathname, { locale: language });
-    setLanguageChanging(false);
-  };
+    replace(pathname, pathname, { locale: language })
+    setLanguageChanging(false)
+  }
 
   return {
     showSignupModalHandler,
@@ -35,7 +35,7 @@ const useLandingNavBar = () => {
     showLanguageChanger,
     t,
     router,
-  };
-};
+  }
+}
 
-export default useLandingNavBar;
+export default useLandingNavBar

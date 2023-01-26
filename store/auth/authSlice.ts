@@ -7,6 +7,9 @@ const initialState: SliceStateType = {
   showForgotPasswordModal: false,
   showConfirmEmailSentModal: false,
   showVerifiedEmailModal: false,
+  showForgotPasswordEmailModal: false,
+  showNewPasswordModal: false,
+  showPasswordChangedModal: false,
 }
 
 const authSlice = createSlice({
@@ -45,6 +48,27 @@ const authSlice = createSlice({
     },
     setShowVerifiedEmailModal(state) {
       state.showVerifiedEmailModal = true
+    },
+    hideShowVerifiedEmailModal(state) {
+      state.showVerifiedEmailModal = false
+    },
+    setShowForgotPasswordEmailModal(state) {
+      state.showForgotPasswordEmailModal = true
+    },
+    hideShowForgotPasswordEmailModal(state) {
+      state.showForgotPasswordEmailModal = false
+    },
+    setShowNewPasswordModal(state) {
+      state.showNewPasswordModal = true
+    },
+    hideNewPasswordModal(state) {
+      state.showNewPasswordModal = false
+    },
+    showPasswordChangedModal(state) {
+      state.showPasswordChangedModal = true
+    },
+    hidePasswordChangedModal(state) {
+      state.showPasswordChangedModal = false
     },
   },
 })

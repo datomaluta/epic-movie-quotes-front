@@ -1,5 +1,10 @@
 import { AxiosResponse } from 'axios'
-import { LoginFormFields, RegisterFormFields } from 'types'
+import {
+  ForgotPasswordField,
+  LoginFormFields,
+  NewPasswordMutationParams,
+  RegisterFormFields,
+} from 'types'
 import instance from './axios'
 
 export const getRegisterRequest = (
@@ -22,4 +27,15 @@ export const login = async (data: LoginFormFields) => {
 
 export const logout = async () => {
   return await instance.get('/api/logout')
+}
+
+export const sendPasswordResetEmail = async (data: ForgotPasswordField) => {
+  return await instance.post('/api/forget-password', data)
+}
+
+export const getNewPasswordRequest = async ({
+  token,
+  data,
+}: NewPasswordMutationParams) => {
+  return await instance.post(`/api/reset-password/${token}`, data)
 }
