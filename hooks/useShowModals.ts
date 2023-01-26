@@ -20,12 +20,27 @@ const useShowModals = () => {
     (state: RootState) => state.auth.showVerifiedEmailModal
   )
 
+  const showForgotPasswordEmailModal = useSelector(
+    (state: RootState) => state.auth.showForgotPasswordEmailModal
+  )
+
+  const showNewPasswordModal = useSelector(
+    (state: RootState) => state.auth.showNewPasswordModal
+  )
+
+  const showPasswordChangedModal = useSelector(
+    (state: RootState) => state.auth.showPasswordChangedModal
+  )
+
   return {
     isRegistering,
     isLogining,
     showForgotPasswordModal,
     showConfirmEmailSentModal,
     showVerifiedEmailModal,
+    showForgotPasswordEmailModal,
+    showNewPasswordModal,
+    showPasswordChangedModal,
   }
 }
 

@@ -7,7 +7,7 @@ import { loginFormValidationSchema } from 'schemas'
 import { useRouter } from 'next/router'
 import { fetchCSRFToken, login } from 'services'
 import { useState } from 'react'
-import { deleteCookie } from 'cookies-next'
+import { deleteCookie, setCookie } from 'cookies-next'
 import { LoginFormFields } from 'types'
 import { useMutation } from 'react-query'
 
@@ -36,6 +36,7 @@ const useLoginModal = () => {
   const { mutate } = useMutation(login, {
     onSuccess: () => {
       router.push('/news-feed')
+      setCookie('isLoggedIn', '1')
     },
   })
 

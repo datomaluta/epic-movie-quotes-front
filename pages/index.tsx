@@ -7,6 +7,8 @@ import {
   ForgotPasswordModal,
   ConfirmEmailModal,
   VerifiedEmailModal,
+  NewPasswordModal,
+  PasswordChangedModal,
 } from 'components'
 import { useShowModals } from 'hooks'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -21,6 +23,9 @@ const Home: NextPage<IndexPropsType> = (props) => {
     showForgotPasswordModal,
     showConfirmEmailSentModal,
     showVerifiedEmailModal,
+    showForgotPasswordEmailModal,
+    showNewPasswordModal,
+    showPasswordChangedModal,
   } = useShowModals()
   const { t } = useTranslation()
 
@@ -30,8 +35,14 @@ const Home: NextPage<IndexPropsType> = (props) => {
       {isRegistering && <SignupModal />}
       {isLogining && <LoginModal />}
       {showForgotPasswordModal && <ForgotPasswordModal />}
-      {showConfirmEmailSentModal && <ConfirmEmailModal />}
+      {showConfirmEmailSentModal && <ConfirmEmailModal type='register' />}
       {showVerifiedEmailModal && <VerifiedEmailModal />}
+      {showForgotPasswordEmailModal && (
+        <ConfirmEmailModal type='passwordReset' />
+      )}
+      {showNewPasswordModal && <NewPasswordModal />}
+      {showPasswordChangedModal && <PasswordChangedModal />}
+
       <div className='text-center h-[50.5rem] bg-gradient-to-t from-gradient-dark via-gradient-almost-black to-black  flex flex-col items-center justify-center'>
         <h1
           className={`${

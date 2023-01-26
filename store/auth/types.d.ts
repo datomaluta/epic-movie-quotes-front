@@ -4,4 +4,7 @@ export type SliceStateType = {
   showForgotPasswordModal: boolean
   showConfirmEmailSentModal: boolean
   showVerifiedEmailModal: boolean
+  showForgotPasswordEmailModal: boolean
+  showNewPasswordModal: boolean
+  showPasswordChangedModal: boolean
 }

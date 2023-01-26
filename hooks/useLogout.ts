@@ -6,7 +6,7 @@ const useLogout = () => {
   const router = useRouter()
   const logoutHandler = async () => {
     await logout()
-    deleteCookie('XSRF-TOKEN')
+    deleteCookie('isLoggedIn')
     router.reload()
   }
 
