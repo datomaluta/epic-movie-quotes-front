@@ -7,7 +7,6 @@ const useResetPassword = () => {
   const router = useRouter()
   const dispatch = useDispatch()
   useEffect(() => {
-    console.log(router.query.token)
     if (router.query.token) {
       localStorage.setItem('resetToken', router.query.token.toString())
       dispatch(authActions.setShowNewPasswordModal())

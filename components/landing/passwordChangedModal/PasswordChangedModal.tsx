@@ -1,5 +1,4 @@
-import { EmailSendCheckIcon } from 'components/icons'
-import { BackdropWrapper, ModalWrapper } from 'components/shared'
+import { BackdropWrapper, ModalWrapper, EmailSendCheckIcon } from 'components'
 
 const PasswordChangedModal: React.FC = () => {
   return (

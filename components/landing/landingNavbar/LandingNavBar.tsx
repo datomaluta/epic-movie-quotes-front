@@ -1,5 +1,5 @@
-import { LangSwitch } from 'components'
-import { NoSSR } from 'components'
+import { LangSwitch, NoSSR } from 'components'
+
 import useLandingNavBar from './useLandingNavBar'
 
 const LandingNavBar: React.FC = () => {
