@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginFormValidationSchema } from 'schemas'
 import { useRouter } from 'next/router'
-import { fetchCSRFToken, login } from 'services'
+import { authWithGoogle, fetchCSRFToken, login } from 'services'
 import { useState } from 'react'
 import { deleteCookie, setCookie } from 'cookies-next'
 import { LoginFormFields } from 'types'
@@ -30,7 +30,7 @@ const useLoginModal = () => {
   const form = useForm<LoginFormFields>({
     mode: 'all',
     resolver: yupResolver(loginFormValidationSchema),
-    defaultValues: { email_username: '', password: '' },
+    defaultValues: { email_username: '', password: '', rememberMe: false },
   })
 
   const { mutate } = useMutation(login, {
@@ -50,6 +50,11 @@ const useLoginModal = () => {
     })
   }
 
+  const authWithGoogleHandler = async () => {
+    const googleUrl = await authWithGoogle()
+    router.push(googleUrl.data)
+  }
+
   return {
     moveToSignupHandler,
     showForgotPasswordModalHandler,
@@ -57,6 +62,7 @@ const useLoginModal = () => {
     form,
     onSubmit,
     error,
+    authWithGoogleHandler,
   }
 }
 

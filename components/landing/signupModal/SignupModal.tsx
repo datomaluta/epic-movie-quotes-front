@@ -8,8 +8,15 @@ import useSignupModal from './useSignupModal'
 import { FormProvider } from 'react-hook-form'
 
 const SignupForm: React.FC = () => {
-  const { showLoginFormHandler, translate, form, onSubmit, errors, isLoading } =
-    useSignupModal()
+  const {
+    showLoginFormHandler,
+    translate,
+    form,
+    onSubmit,
+    errors,
+    isLoading,
+    authWithGoogleHandler,
+  } = useSignupModal()
 
   return (
     <FormProvider {...form}>
@@ -36,6 +43,7 @@ const SignupForm: React.FC = () => {
               type='email'
               placeholder={translate('common:email_placeholder')}
               name='email'
+              error={errors?.email}
             />
 
             <TextInput
@@ -55,10 +63,13 @@ const SignupForm: React.FC = () => {
             <button className='bg-dark-red py-2 text-white w-[22.5rem] rounded mt-2'>
               {translate('common:get_started')}
             </button>
-            <button className='border border-very-light-grey rounded  w-[22.5rem] mt-4 flex items-center justify-center gap-2 py-[0.438rem]'>
+            <button
+              onClick={authWithGoogleHandler}
+              className='border border-very-light-grey rounded  w-[22.5rem] mt-4 flex items-center justify-center gap-2 py-[0.438rem]'
+              type='button'
+            >
               <GoogleIcon />
               <span className='text-white'>
-                {' '}
                 {translate('common:signup_with_google')}
               </span>
             </button>

@@ -39,3 +39,7 @@ export const getNewPasswordRequest = async ({
 }: NewPasswordMutationParams) => {
   return await instance.post(`/api/reset-password/${token}`, data)
 }
+
+export const authWithGoogle = async () => {
+  return await instance.get('/api/auth/google')
+}
