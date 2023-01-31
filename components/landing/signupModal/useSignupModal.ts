@@ -17,6 +17,10 @@ const useSignupModal = () => {
     dispatch(authActions.showLoginModal())
   }
 
+  const modalCloseHandler = () => {
+    dispatch(authActions.hideSignupModal())
+  }
+
   const { t } = useTranslation()
   const [errors, setErrors] = useState({ name: '', email: '' })
 
@@ -52,6 +56,7 @@ const useSignupModal = () => {
     isLoading,
     authWithGoogleHandler,
     googleError,
+    modalCloseHandler,
   }
 }
 

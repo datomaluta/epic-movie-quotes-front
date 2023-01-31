@@ -18,6 +18,10 @@ const useLoginModal = () => {
   const [error, setError] = useState('')
   const { authWithGoogleHandler, googleError } = useGoogleAuth()
 
+  const modalCloseHandler = () => {
+    dispatch(authActions.hideLoginModal())
+  }
+
   const moveToSignupHandler = () => {
     dispatch(authActions.hideLoginModal())
     dispatch(authActions.showSignupModal())
@@ -61,6 +65,7 @@ const useLoginModal = () => {
     error,
     authWithGoogleHandler,
     googleError,
+    modalCloseHandler,
   }
 }
 

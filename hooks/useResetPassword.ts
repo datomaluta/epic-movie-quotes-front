@@ -10,7 +10,7 @@ const useResetPassword = () => {
     if (router.query.token) {
       localStorage.setItem('resetToken', router.query.token.toString())
       dispatch(authActions.setShowNewPasswordModal())
-      router.replace('/', undefined, { shallow: true })
+      router.replace(`/${router.query.locale}`)
     }
   }, [router, dispatch])
 }

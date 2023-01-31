@@ -19,10 +19,15 @@ const TextInput: React.FC<PropsType> = (props) => {
     passwordFieldType,
     ref,
     rest,
+    router,
   } = useTextInput(props.name)
 
   return (
-    <div className='mb-4'>
+    <div
+      className={`mb-3 ${
+        router.locale === 'en' ? 'font-helvetica-en' : 'font-helvetica-geo'
+      }`}
+    >
       <label className='text-white mb-2 block'>
         {props.label}
         <span className='text-red-danger inline-block ml-1'>*</span>
@@ -76,12 +81,14 @@ const TextInput: React.FC<PropsType> = (props) => {
         )}
       </div>
 
-      <div className='text-error-red text-sm h-1 mt-1'>
-        <ErrorMessage
-          errors={form.formState.errors}
-          name={props.name}
-          render={({ message }) => <p>{t(message)}</p>}
-        />
+      <div className={`text-error-red text-sm mt-1 h-1 `}>
+        {!props.error && (
+          <ErrorMessage
+            errors={form.formState.errors}
+            name={props.name}
+            render={({ message }) => <p>{t(message)}</p>}
+          />
+        )}
         <p>{props.error}</p>
       </div>
     </div>

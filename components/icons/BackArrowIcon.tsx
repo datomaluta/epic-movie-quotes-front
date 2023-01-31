@@ -12,7 +12,7 @@ const BackArrowIcon: React.FC = () => {
         fill='white'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default BackArrowIcon;
+export default BackArrowIcon

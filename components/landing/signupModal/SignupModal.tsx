@@ -17,12 +17,13 @@ const SignupForm: React.FC = () => {
     isLoading,
     authWithGoogleHandler,
     googleError,
+    modalCloseHandler,
   } = useSignupModal()
 
   return (
     <FormProvider {...form}>
       <BackdropWrapper>
-        <ModalWrapper>
+        <ModalWrapper onClose={modalCloseHandler}>
           {isLoading && <h1 className='text-red text-2xl'>Loading...</h1>}
           <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
             {translate('common:create_an_account')}

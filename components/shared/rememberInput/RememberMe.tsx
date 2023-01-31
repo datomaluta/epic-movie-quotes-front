@@ -19,7 +19,7 @@ const RememberMe: React.FC<PropsType> = (props) => {
         className='inline-block mr-2'
       />
       <label htmlFor='remember' className='text-white'>
-        Remember me
+        {props.translate('remember_me')}
       </label>
     </div>
   )

@@ -19,6 +19,7 @@ export function middleware(request: NextRequest) {
       response = NextResponse.rewrite(new URL('/news-feed', request.url))
     }
   }
+
   return response
 }
 

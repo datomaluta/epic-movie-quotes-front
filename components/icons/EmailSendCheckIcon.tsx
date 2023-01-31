@@ -27,7 +27,7 @@ const EmailSendCheckIcon: React.FC = () => {
         </clipPath>
       </defs>
     </svg>
-  );
-};
+  )
+}
 
-export default EmailSendCheckIcon;
+export default EmailSendCheckIcon

@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios'
+import { i18n } from 'next-i18next'
 import {
   ForgotPasswordField,
   LoginFormFields,
@@ -6,6 +7,11 @@ import {
   RegisterFormFields,
 } from 'types'
 import instance from './axios'
+
+instance.interceptors.request.use(function (config) {
+  config.headers['Accept-Language'] = i18n?.language
+  return config
+})
 
 export const getRegisterRequest = (
   data: RegisterFormFields

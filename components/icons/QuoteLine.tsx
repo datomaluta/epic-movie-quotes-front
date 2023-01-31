@@ -16,7 +16,7 @@ const Line: React.FC = () => {
         strokeWidth='2'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default Line;
+export default Line
