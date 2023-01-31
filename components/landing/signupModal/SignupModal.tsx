@@ -6,13 +6,18 @@ import {
 } from 'components'
 import useSignupModal from './useSignupModal'
 import { FormProvider } from 'react-hook-form'
-import { useGoogleAuth } from 'hooks'
 
 const SignupForm: React.FC = () => {
-  const { showLoginFormHandler, translate, form, onSubmit, errors, isLoading } =
-    useSignupModal()
-
-  const { authWithGoogleHandler, googleError } = useGoogleAuth()
+  const {
+    showLoginFormHandler,
+    translate,
+    form,
+    onSubmit,
+    errors,
+    isLoading,
+    authWithGoogleHandler,
+    googleError,
+  } = useSignupModal()
 
   return (
     <FormProvider {...form}>

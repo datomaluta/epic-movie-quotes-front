@@ -10,12 +10,13 @@ import { useState } from 'react'
 import { deleteCookie, setCookie } from 'cookies-next'
 import { LoginFormFields } from 'types'
 import { useMutation } from 'react-query'
+import { useGoogleAuth } from 'hooks'
 
 const useLoginModal = () => {
   const router = useRouter()
   const dispatch = useDispatch()
   const [error, setError] = useState('')
-  // const [googleError, setGoogleError] = useState('')
+  const { authWithGoogleHandler, googleError } = useGoogleAuth()
 
   const moveToSignupHandler = () => {
     dispatch(authActions.hideLoginModal())
@@ -58,6 +59,8 @@ const useLoginModal = () => {
     form,
     onSubmit,
     error,
+    authWithGoogleHandler,
+    googleError,
   }
 }
 

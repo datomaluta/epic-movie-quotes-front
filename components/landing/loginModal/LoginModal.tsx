@@ -5,7 +5,6 @@ import {
   TextInput,
   RememberMe,
 } from 'components'
-import { useGoogleAuth } from 'hooks'
 import { FormProvider } from 'react-hook-form'
 import useLoginModal from './useLoginModal'
 
@@ -17,9 +16,9 @@ const LoginModal: React.FC = () => {
     form,
     onSubmit,
     error,
+    authWithGoogleHandler,
+    googleError,
   } = useLoginModal()
-
-  const { authWithGoogleHandler, googleError } = useGoogleAuth()
 
   return (
     <FormProvider {...form}>

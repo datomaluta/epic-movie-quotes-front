@@ -5,17 +5,21 @@ import { authWithGoogle } from 'services'
 
 const useGoogleAuth = () => {
   const [googleError, setGoogleError] = useState('')
+  const [isClicked, setIsClicked] = useState(false)
   const router = useRouter()
 
-  const googleQuery = useQuery('google_url', authWithGoogle)
-
-  const authWithGoogleHandler = async () => {
-    if (googleQuery.isSuccess) {
-      router.push(googleQuery?.data?.data)
-    }
-    if (googleQuery.isError) {
+  useQuery('google_url', authWithGoogle, {
+    enabled: isClicked,
+    onSuccess: (data) => {
+      router?.push(data?.data)
+    },
+    onError: () => {
       setGoogleError('Something went wrong with google!')
-    }
+    },
+  })
+
+  const authWithGoogleHandler = () => {
+    setIsClicked(true)
   }
 
   return { authWithGoogleHandler, googleError }
