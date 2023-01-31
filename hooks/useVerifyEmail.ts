@@ -14,7 +14,6 @@ const useVerifyEmail = () => {
       getEmailVerifyRequest(router.query.verify_url.toString())
       dispatch(authActions.setShowVerifiedEmailModal())
       router.replace(`/${router.query.locale}`)
-      // router.replace(`/${router.query.locale}`, undefined, { shallow: true })
     }
   }, [router.query.verify_url, router, dispatch])
 }

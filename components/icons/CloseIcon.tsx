@@ -5,7 +5,6 @@ const CloseIcon: React.FC = () => {
       className='ionicon'
       viewBox='0 0 512 512'
     >
-      <title>Close</title>
       <path
         fill='#fff'
         stroke='#fff'
