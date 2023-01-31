@@ -10,11 +10,13 @@ import { useState } from 'react'
 import { deleteCookie, setCookie } from 'cookies-next'
 import { LoginFormFields } from 'types'
 import { useMutation } from 'react-query'
+import { useGoogleAuth } from 'hooks'
 
 const useLoginModal = () => {
   const router = useRouter()
   const dispatch = useDispatch()
   const [error, setError] = useState('')
+  const { authWithGoogleHandler, googleError } = useGoogleAuth()
 
   const moveToSignupHandler = () => {
     dispatch(authActions.hideLoginModal())
@@ -30,7 +32,7 @@ const useLoginModal = () => {
   const form = useForm<LoginFormFields>({
     mode: 'all',
     resolver: yupResolver(loginFormValidationSchema),
-    defaultValues: { email_username: '', password: '' },
+    defaultValues: { email_username: '', password: '', rememberMe: false },
   })
 
   const { mutate } = useMutation(login, {
@@ -57,6 +59,8 @@ const useLoginModal = () => {
     form,
     onSubmit,
     error,
+    authWithGoogleHandler,
+    googleError,
   }
 }
 

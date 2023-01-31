@@ -5,6 +5,7 @@ export type IndexPropsType = {
 export type LoginFormFields = {
   email_username: string
   password: string
+  rememberMe: boolean
 }
 
 export type RegisterFormFields = {

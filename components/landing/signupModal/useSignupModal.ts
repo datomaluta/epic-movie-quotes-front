@@ -8,6 +8,7 @@ import { fetchCSRFToken, getRegisterRequest } from 'services'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { RegisterFormFields } from 'types'
+import { useGoogleAuth } from 'hooks'
 
 const useSignupModal = () => {
   const dispatch = useDispatch()
@@ -17,7 +18,9 @@ const useSignupModal = () => {
   }
 
   const { t } = useTranslation()
-  const [errors, setErrors] = useState({ name: '' })
+  const [errors, setErrors] = useState({ name: '', email: '' })
+
+  const { authWithGoogleHandler, googleError } = useGoogleAuth()
 
   const form = useForm<RegisterFormFields>({
     mode: 'all',
@@ -47,6 +50,8 @@ const useSignupModal = () => {
     onSubmit,
     errors,
     isLoading,
+    authWithGoogleHandler,
+    googleError,
   }
 }
 

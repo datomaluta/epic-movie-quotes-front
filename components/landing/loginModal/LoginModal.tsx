@@ -3,6 +3,7 @@ import {
   BackdropWrapper,
   ModalWrapper,
   TextInput,
+  RememberMe,
 } from 'components'
 import { FormProvider } from 'react-hook-form'
 import useLoginModal from './useLoginModal'
@@ -15,6 +16,8 @@ const LoginModal: React.FC = () => {
     form,
     onSubmit,
     error,
+    authWithGoogleHandler,
+    googleError,
   } = useLoginModal()
 
   return (
@@ -44,16 +47,7 @@ const LoginModal: React.FC = () => {
             />
 
             <div className='flex justify-between items-center mb-2'>
-              <div>
-                <input
-                  type='checkbox'
-                  id='remember'
-                  className='inline-block mr-2'
-                />
-                <label htmlFor='remember' className='text-white'>
-                  {translate('common:remember_me')}
-                </label>
-              </div>
+              <RememberMe name='rememberMe' />
               <button
                 onClick={showForgotPasswordModalHandler}
                 type='button'
@@ -67,6 +61,7 @@ const LoginModal: React.FC = () => {
               {translate('common:sign_in')}
             </button>
             <button
+              onClick={authWithGoogleHandler}
               type='button'
               className='border border-very-light-grey rounded  w-[22.5rem] mt-4 flex items-center justify-center gap-2 py-[0.438rem]'
             >
@@ -76,6 +71,7 @@ const LoginModal: React.FC = () => {
                 {translate('common:sign_in_with_google')}
               </span>
             </button>
+            {googleError && <p>{googleError}</p>}
 
             <p className='text-light-grey mt-8 text-center'>
               {translate('common:dont_have_an_account')}
