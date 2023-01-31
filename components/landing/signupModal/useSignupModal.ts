@@ -4,11 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { registerFormValidationSchema } from 'schemas'
-import { authWithGoogle, fetchCSRFToken, getRegisterRequest } from 'services'
+import { fetchCSRFToken, getRegisterRequest } from 'services'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { RegisterFormFields } from 'types'
-import { useRouter } from 'next/router'
 
 const useSignupModal = () => {
   const dispatch = useDispatch()
@@ -19,7 +18,6 @@ const useSignupModal = () => {
 
   const { t } = useTranslation()
   const [errors, setErrors] = useState({ name: '', email: '' })
-  const router = useRouter()
 
   const form = useForm<RegisterFormFields>({
     mode: 'all',
@@ -42,11 +40,6 @@ const useSignupModal = () => {
     })
   }
 
-  const authWithGoogleHandler = async () => {
-    const googleUrl = await authWithGoogle()
-    router.push(googleUrl.data)
-  }
-
   return {
     showLoginFormHandler,
     translate: t,
@@ -54,7 +47,6 @@ const useSignupModal = () => {
     onSubmit,
     errors,
     isLoading,
-    authWithGoogleHandler,
   }
 }
 
