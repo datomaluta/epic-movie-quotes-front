@@ -26,6 +26,7 @@ const Home: NextPage<IndexPropsType> = (props) => {
     showForgotPasswordEmailModal,
     showNewPasswordModal,
     showPasswordChangedModal,
+    showSignupModalHandler,
   } = useShowModals()
   const { t } = useTranslation()
 
@@ -52,6 +53,7 @@ const Home: NextPage<IndexPropsType> = (props) => {
           {t('home:landing_main_text')}
         </h1>
         <button
+          onClick={showSignupModalHandler}
           className={`bg-dark-red text-white px-4 py-2 rounded-[0.3rem] text-xl sm:text-base ${
             props.locale === 'en' ? 'font-helvetica-en' : 'font-helvetica-geo'
           }`}

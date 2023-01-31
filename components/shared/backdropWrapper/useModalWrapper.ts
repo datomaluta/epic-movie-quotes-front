@@ -11,6 +11,7 @@ const useModalWrapper = () => {
     dispatch(authActions.hideShowForgotPasswordEmailModal())
     dispatch(authActions.hideNewPasswordModal())
     dispatch(authActions.hidePasswordChangedModal())
+    dispatch(authActions.hideShowVerifiedEmailModal())
   }
 
   return { hideModals }

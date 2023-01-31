@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -9,6 +10,7 @@ export const useTextInput = (name: string) => {
   const isDirty = form.getFieldState(name).isDirty
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [passwordFieldType, setPasswordFieldType] = useState('password')
+  const router = useRouter()
 
   const passwordShowClickHandler = () => {
     inputRef.current!.type =
@@ -33,5 +35,6 @@ export const useTextInput = (name: string) => {
     passwordFieldType,
     ref,
     rest,
+    router,
   }
 }

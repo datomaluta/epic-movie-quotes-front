@@ -15,12 +15,12 @@ const NewPasswordModal: React.FC = () => {
       <BackdropWrapper>
         <ModalWrapper>
           <NoSSR>
-            <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
-              Create New Password
+            <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3 '>
+              {t('common:create_new_password')}
             </h1>
             <p className='text-red-500'>{error}</p>
-            <p className='text-light-grey mb-6 px-36 text-center'>
-              Your new password must be different from previous used passwords
+            <p className='text-light-grey mb-6 px-36 text-center '>
+              {t('common:password_must_be_different_from_previous')}
             </p>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <TextInput
@@ -38,7 +38,7 @@ const NewPasswordModal: React.FC = () => {
               />
 
               <button className='bg-dark-red py-2 text-white w-[22.5rem] rounded mt-2'>
-                Reset Password
+                {t('reset_password')}
               </button>
             </form>
             <button
@@ -47,7 +47,9 @@ const NewPasswordModal: React.FC = () => {
               onClick={backToLoginModal}
             >
               <BackArrowIcon />
-              <span className='text-light-grey'>Back to log in</span>
+              <span className='text-light-grey'>
+                {t('common:back_to_login')}
+              </span>
             </button>
           </NoSSR>
         </ModalWrapper>

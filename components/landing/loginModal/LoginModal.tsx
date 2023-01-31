@@ -18,13 +18,14 @@ const LoginModal: React.FC = () => {
     error,
     authWithGoogleHandler,
     googleError,
+    modalCloseHandler,
   } = useLoginModal()
 
   return (
     <FormProvider {...form}>
       <BackdropWrapper>
-        <ModalWrapper>
-          <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3'>
+        <ModalWrapper onClose={modalCloseHandler}>
+          <h1 className='text-white text-[2rem] sm:text-2xl font-medium mb-3 '>
             {translate('common:login_to_profile')}
           </h1>
           <p className='text-light-grey mb-6'>
@@ -47,7 +48,7 @@ const LoginModal: React.FC = () => {
             />
 
             <div className='flex justify-between items-center mb-2'>
-              <RememberMe name='rememberMe' />
+              <RememberMe name='rememberMe' translate={translate} />
               <button
                 onClick={showForgotPasswordModalHandler}
                 type='button'

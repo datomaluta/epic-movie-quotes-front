@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useMutation } from 'react-query'
 import { useDispatch } from 'react-redux'
 import { forgotPasswordValidationSchema } from 'schemas'
@@ -14,6 +15,7 @@ const useForgotPasswordModal = () => {
   const backToLoginModal = () => {
     dispatch(authActions.setBackToLoginModal())
   }
+  const { t } = useTranslation()
 
   const form = useForm<ForgotPasswordField>({
     mode: 'all',
@@ -36,7 +38,7 @@ const useForgotPasswordModal = () => {
     mutate(data)
   }
 
-  return { backToLoginModal, form, onSubmit, error, isLoading }
+  return { backToLoginModal, form, onSubmit, error, isLoading, t }
 }
 
 export default useForgotPasswordModal

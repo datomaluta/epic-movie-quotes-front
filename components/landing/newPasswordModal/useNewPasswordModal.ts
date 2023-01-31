@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -18,6 +19,7 @@ const UseNewPasswordModal = () => {
   }
 
   const { t } = useTranslation()
+  const router = useRouter()
 
   const form = useForm<NewPasswordFormFields>({
     mode: 'all',
@@ -47,6 +49,7 @@ const UseNewPasswordModal = () => {
     onSubmit,
     backToLoginModal,
     error,
+    router,
   }
 }
 

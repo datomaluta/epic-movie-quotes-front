@@ -1,7 +1,8 @@
-import { useSelector } from 'react-redux'
-import { RootState } from 'store'
+import { useDispatch, useSelector } from 'react-redux'
+import { authActions, RootState } from 'store'
 
 const useShowModals = () => {
+  const dispatch = useDispatch()
   const isRegistering = useSelector(
     (state: RootState) => state.auth.isRegistering
   )
@@ -32,6 +33,10 @@ const useShowModals = () => {
     (state: RootState) => state.auth.showPasswordChangedModal
   )
 
+  const showSignupModalHandler = () => {
+    dispatch(authActions.showSignupModal())
+  }
+
   return {
     isRegistering,
     isLogining,
@@ -41,6 +46,7 @@ const useShowModals = () => {
     showForgotPasswordEmailModal,
     showNewPasswordModal,
     showPasswordChangedModal,
+    showSignupModalHandler,
   }
 }
 
