@@ -17,12 +17,9 @@ const useNewsFeed = () => {
   const dispatch = useDispatch()
 
   const userData = useSelector((state: RootState) => state.user)
-  console.log(userData)
 
   useQuery('userData', getUserData, {
     onSuccess: (data) => {
-      console.log(data)
-      console.log(data?.data?.user)
       dispatch(userActions.setUserData({ userData: data?.data.user }))
     },
     onError: () => {

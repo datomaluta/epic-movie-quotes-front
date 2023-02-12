@@ -4,7 +4,6 @@ import useProfileTextInput from './useProfileTextInput'
 
 const ProfileTextInput: React.FC<PropsType> = (props) => {
   const { form } = useProfileTextInput(props.name)
-  console.log(props.error)
 
   return (
     <>

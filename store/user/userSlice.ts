@@ -15,12 +15,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // setname(state, action) {
-    //   state.name = action.payload.name
-    // },
     setUserData(state, action) {
-      // localStorage.setItem('userData', JSON.stringify(action.payload.userData))
-      // return action.payload.userData
       state.name = action.payload.userData.name
       state.id = action.payload.userData.id
       state.emails = action.payload.userData.emails
