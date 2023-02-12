@@ -27,6 +27,15 @@ module.exports = {
         'success-green': '#198754',
         'error-red-border': '#E31221',
         'focus-blue': '#a9b5bf',
+        'red-to-orange': '#E33812',
+        'header-dark': '#222030',
+        'profile-dark-blue': '#11101A',
+        'input-black': '#212529',
+        'border-white': '#D9D9D9',
+        'primary-green': '#198754',
+        'primary-border': '#198754',
+        'not-verified-yellow': '#EC9524',
+        'not-verified-border': '#EC9524',
       },
       fontFamily: {
         'helvetica-eng': 'helvetica-neue',
@@ -43,6 +52,10 @@ module.exports = {
           'linear-gradient(to bottom, rgba(24, 22, 35, 1), rgba(25, 23, 37, 1),rgba(13, 11, 20, 1))',
         'email-modal':
           'linear-gradient(112.94deg, rgba(239, 239, 239, 0.1) -1.81%, rgba(239, 239, 239, 0.00514528) 102.5%, rgba(1, 1, 1, 0.00260417) 102.51%, rgba(239, 239, 239, 0.1) 102.52%)',
+        'news-feed':
+          'linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%);',
+        'new-email':
+          'linear-gradient(187.16deg, rgba(24, 22, 35, 0.8), rgba(25, 23, 37, 0.8), rgba(13, 11, 20, 0.8));',
       },
     },
   },

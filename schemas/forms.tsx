@@ -54,3 +54,21 @@ export const newPasswordValidationSchema = Yup.object({
     .required('validations:field_required')
     .oneOf([Yup.ref('password')], 'validations:password_does_not_match'),
 })
+
+export const newUserNameValidationSchema = Yup.object({
+  username: Yup.string()
+    .min(3, 'validations:field_min_length')
+    .max(15, 'validations:field_max_length')
+    .matches(/^[a-z0-9]+$/, {
+      message: 'validations:only_letters_and_numbers',
+    }),
+})
+
+export const updatePasswordValidationSchema = Yup.object({
+  password: Yup.string()
+    .min(8, 'validations:password_min_length')
+    .max(15, 'validations:field_max_length')
+    .matches(/^[a-z0-9]+$/, {
+      message: 'validations:only_letters_and_numbers',
+    }),
+})

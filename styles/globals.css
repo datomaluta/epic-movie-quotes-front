@@ -34,6 +34,19 @@ body {
     font-family: 'helvetica-neue';
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #2c293e; 
+} 
+::-webkit-scrollbar-thumb {
+    background: #E31221; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
