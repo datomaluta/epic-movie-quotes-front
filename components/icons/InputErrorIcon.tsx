@@ -14,7 +14,7 @@ const InputErrorIcon: React.FC = () => {
         fill='#E31221'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default InputErrorIcon;
+export default InputErrorIcon
