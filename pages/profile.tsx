@@ -7,7 +7,7 @@ import {
   NotVerifiedEmailWarning,
   PrimaryEmailCheck,
 } from 'components'
-import { ProfileTextInput } from 'components/shared/profileTextInput'
+import { ProfileTextInput } from 'components'
 import { useProfile } from 'hooks'
 import Image from 'next/image'
 import Link from 'next/link'

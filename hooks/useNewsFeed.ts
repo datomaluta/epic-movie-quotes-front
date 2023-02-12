@@ -6,13 +6,6 @@ import { RootState } from 'store'
 import { userActions } from 'store/user/userSlice'
 
 const useNewsFeed = () => {
-  // const [userData, setUserData] = useState({})
-  // const fetchHandler = async () => {
-  //   const response = await getUserData()
-
-  //   setUserData(response.data.user)
-  // }
-  // const userQuery = useQuery('userData', getUserData)
   const [error, setError] = useState('')
   const dispatch = useDispatch()
 

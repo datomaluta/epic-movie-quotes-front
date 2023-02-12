@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 export type IndexPropsType = {
   locale: string
 }
@@ -29,7 +31,7 @@ export type NewPasswordMutationParams = {
   data: NewPasswordFormFields
 }
 
-export type userData = {
+export type UserData = {
   id: number
   name: string
   emails: [
@@ -53,3 +55,5 @@ export type UpdateFormData = {
 export type NewEmailType = {
   email: string
 }
+
+export type SetState<T> = Dispatch<SetStateAction<T>>

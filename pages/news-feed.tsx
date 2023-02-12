@@ -2,7 +2,7 @@ import { Header, HomeIcon, MovieIcon } from 'components'
 import { profilePicture } from 'public'
 import Image from 'next/image'
 import Link from 'next/link'
-import useNewsFeed from 'hooks/useNewsFeed'
+import { useNewsFeed } from 'hooks'
 
 const NewsFeed = () => {
   const { userData, error } = useNewsFeed()

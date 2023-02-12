@@ -14,8 +14,7 @@ import {
   makeEmailPrimary,
   updateUserData,
 } from 'services'
-import { RootState } from 'store'
-import { userActions } from 'store/user/userSlice'
+import { RootState, userActions } from 'store'
 
 const useProfile = () => {
   const userData = useSelector((state: RootState) => state.user)
