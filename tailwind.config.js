@@ -36,6 +36,10 @@ module.exports = {
         'primary-border': '#198754',
         'not-verified-yellow': '#EC9524',
         'not-verified-border': '#EC9524',
+        'mobile-grey': '#24222F',
+        'border-grey': '797B85',
+        'dark-grey': '#9C9A9A',
+        'grey-border': '#545454',
       },
       fontFamily: {
         'helvetica-eng': 'helvetica-neue',
@@ -56,6 +60,8 @@ module.exports = {
           'linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%);',
         'new-email':
           'linear-gradient(187.16deg, rgba(24, 22, 35, 0.8), rgba(25, 23, 37, 0.8), rgba(13, 11, 20, 0.8));',
+        'confirm-changes':
+          'linear-gradient(187.16deg, rgba(24, 22, 35, 1), rgba(25, 23, 37, 1), rgba(13, 11, 20, 1));',
       },
     },
   },

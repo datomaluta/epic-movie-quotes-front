@@ -21,6 +21,10 @@ const useProfile = () => {
   const [userNameEditing, setUserNameEditing] = useState(false)
   const [passwordEditing, setPasswordEditing] = useState(false)
   const [showNewEmailModal, setShowNewEmailModal] = useState(false)
+  const [showNewUsernameForm, setShowNewUsernameForm] = useState(false)
+  const [showNewPasswordForm, setShowNewPasswordForm] = useState(false)
+  const [showEmailsTab, setShowEmailsTab] = useState(false)
+  const [showMobileNewEmailForm, setShowMobileNewEmailForm] = useState(false)
   const [error, setError] = useState('')
   const queryClient = useQueryClient()
   const dispatch = useDispatch()
@@ -96,6 +100,33 @@ const useProfile = () => {
     queryClient.invalidateQueries('userData')
   }
 
+  // mobile logic
+  const showNewUsernameFormHandler = (param: boolean) => {
+    setShowNewUsernameForm(param)
+  }
+
+  const showNewPasswordFormHandler = (param: boolean) => {
+    setShowNewPasswordForm(param)
+  }
+
+  const showMobileNewEmailFormHandler = (param: boolean) => {
+    setShowMobileNewEmailForm(param)
+  }
+
+  const showEmailsTabHandler = (param: boolean) => {
+    setShowEmailsTab(param)
+  }
+
+  const mobileUserNameForm = useForm({
+    mode: 'all',
+    resolver: yupResolver(newUserNameValidationSchema),
+    // defaultValues: { username: userQuery.data?.data?.user?.name },
+  })
+
+  const mobileUserNameSubmit = (data) => {
+    console.log(data)
+  }
+
   return {
     userNameForm,
     passwordForm,
@@ -112,6 +143,16 @@ const useProfile = () => {
     deleteEmailHandler,
     error,
     avatarForm,
+    showNewUsernameForm,
+    showNewUsernameFormHandler,
+    mobileUserNameForm,
+    mobileUserNameSubmit,
+    showNewPasswordForm,
+    showNewPasswordFormHandler,
+    showMobileNewEmailForm,
+    showMobileNewEmailFormHandler,
+    showEmailsTab,
+    showEmailsTabHandler,
   }
 }
 
