@@ -1,7 +1,7 @@
+import { useGetTranslation } from 'hooks'
 import Image from 'next/image'
 import { bigAvatar } from 'public'
 import { PropsType } from './types'
-import useGetTranslation from 'hooks/useGetTranslation'
 
 const GoogleProfile: React.FC<PropsType> = (props) => {
   const { t } = useGetTranslation()

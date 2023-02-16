@@ -1,8 +1,8 @@
+import { useGetTranslation } from 'hooks'
 import { PropsType } from './types'
-import useConfirmChangesModal from './useConfirmChangesModal'
 
 const ConfirmChangesModal: React.FC<PropsType> = (props) => {
-  const { t } = useConfirmChangesModal()
+  const { t } = useGetTranslation()
   return (
     <div className='w-screen h-screen fixed top-0 left-0 z-50 '>
       <div className='w-full h-full bg-confirm-changes bg-opacity-70 backdrop-blur-sm'></div>

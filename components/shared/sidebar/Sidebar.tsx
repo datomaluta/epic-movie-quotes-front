@@ -1,5 +1,5 @@
 import { HomeIcon, MovieIcon } from 'components/icons'
-import useGetTranslation from 'hooks/useGetTranslation'
+import { useGetTranslation } from 'hooks'
 import Image from 'next/image'
 import Link from 'next/link'
 import { profilePicture } from 'public'
