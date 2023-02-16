@@ -66,6 +66,6 @@ export type NewEmailType = {
 export type SetState<T> = Dispatch<SetStateAction<T>>
 
 export type BackArrowIconType = {
-  width: string
-  height: string
+  width?: string
+  height?: string
 }

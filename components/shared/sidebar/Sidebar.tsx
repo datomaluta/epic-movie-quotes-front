@@ -2,9 +2,11 @@ import { HomeIcon, MovieIcon } from 'components/icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { profilePicture } from 'public'
+import { useTranslation } from 'react-i18next'
 import { PropsType } from './types'
 
 const Sidebar: React.FC<PropsType> = (props) => {
+  const { t } = useTranslation()
   return (
     <div className='flex  fixed flex-col gap-11 max-w-[28.188rem] lg:hidden'>
       <Link href='/profile'>
@@ -28,19 +30,19 @@ const Sidebar: React.FC<PropsType> = (props) => {
             <p className='text-2xl'>
               {props.userQuery?.data?.data?.user?.name}
             </p>
-            <p>Edit your profile</p>
+            <p>{t('common:edit_your_profile')}</p>
           </div>
         </div>
       </Link>
       <div className='flex items-center gap-11 pl-[0.625rem]'>
         <HomeIcon />
         <Link href='/news-feed' className='text-2xl'>
-          News feed
+          {t('common:news_feed')}
         </Link>
       </div>
       <div className='flex items-center gap-11 pl-[0.625rem]'>
         <MovieIcon />
-        <p className='text-2xl'>List of movies</p>
+        <p className='text-2xl'>{t('common:list_of_movies')}</p>
       </div>
     </div>
   )

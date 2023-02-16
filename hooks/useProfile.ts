@@ -1,6 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -33,6 +35,8 @@ const useProfile = () => {
   const [error, setError] = useState('')
   const queryClient = useQueryClient()
   const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const router = useRouter()
 
   const userQuery = useQuery('userData', getUserData, {
     onSuccess: (data) => {
@@ -218,6 +222,8 @@ const useProfile = () => {
     mobileEmailSubmit,
     mobileAvatarForm,
     mobileAvatarSubmit,
+    router,
+    t,
   }
 }
 

@@ -30,8 +30,6 @@ export const useTextInput = (name: string) => {
     dispatch(userActions.updateUserData({ type: name, value: inputData }))
   }, [dispatch, name, inputData])
 
-  console.log(inputData)
-
   const { ref, ...rest } = form.register(name)
 
   return {
