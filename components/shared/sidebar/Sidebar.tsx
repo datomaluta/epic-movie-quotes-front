@@ -1,12 +1,13 @@
 import { HomeIcon, MovieIcon } from 'components/icons'
+import useGetTranslation from 'hooks/useGetTranslation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { profilePicture } from 'public'
-import { useTranslation } from 'react-i18next'
 import { PropsType } from './types'
 
 const Sidebar: React.FC<PropsType> = (props) => {
-  const { t } = useTranslation()
+  const { t } = useGetTranslation()
+
   return (
     <div className='flex  fixed flex-col gap-11 max-w-[28.188rem] lg:hidden'>
       <Link href='/profile'>

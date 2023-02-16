@@ -1,10 +1,11 @@
+import useGetTranslation from 'hooks/useGetTranslation'
 import Image from 'next/image'
 import { bigAvatar } from 'public'
 import { PropsType } from './types'
-import useMobileGoogleProfile from './useMobileGoogleProfile'
 
 const MobileGoogleProfile: React.FC<PropsType> = (props) => {
-  const { t } = useMobileGoogleProfile()
+  const { t } = useGetTranslation()
+
   return (
     <div className='hidden lg:block bg-mobile-grey w-full rounded-xl pb-16 relative px-8'>
       <div className='flex flex-col gap-3 items-center mt-10'>

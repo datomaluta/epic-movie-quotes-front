@@ -6,11 +6,9 @@ import {
   SearchIcon,
 } from 'components'
 import { useLogout } from 'hooks'
-import useHeader from './useHeader'
 
 const Header: React.FC = () => {
-  const { t } = useHeader()
-  const { logoutHandler } = useLogout()
+  const { logoutHandler, t } = useLogout()
 
   return (
     <header className='flex items-center fixed z-50 w-full bg-header-dark bg-opacity-75 backdrop-blur justify-between h-[5.375rem] px-[4.313rem] sm:px-[2.375rem]'>

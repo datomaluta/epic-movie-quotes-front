@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
 
-const useMobileGoogleProfile = () => {
+const useGetTranslation = () => {
   const { t } = useTranslation()
 
   return { t }
 }
 
-export default useMobileGoogleProfile
+export default useGetTranslation

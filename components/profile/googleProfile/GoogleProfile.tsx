@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { bigAvatar } from 'public'
-import useGoogleProfile from './useGoogleProfile'
 import { PropsType } from './types'
+import useGetTranslation from 'hooks/useGetTranslation'
 
 const GoogleProfile: React.FC<PropsType> = (props) => {
-  const { t } = useGoogleProfile()
+  const { t } = useGetTranslation()
   return (
     <div className='ml-[28rem] xl:ml-[20rem] lg:hidden max-w-[62.375rem] relative'>
       <p className='text-2xl mb-[7.875rem] font-medium'>

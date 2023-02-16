@@ -117,7 +117,6 @@ const useProfile = () => {
     queryClient.invalidateQueries('userData')
   }
 
-  // mobile logic
   const showNewUsernameFormHandler = (param: boolean) => {
     setShowNewUsernameForm(param)
   }
