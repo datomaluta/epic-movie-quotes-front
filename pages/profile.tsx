@@ -2,6 +2,7 @@ import {
   AddNewEmailModal,
   BackArrowIcon,
   ConfirmChangesModal,
+  GoogleProfile,
   Header,
   ImageInput,
   NoSSR,
@@ -12,6 +13,7 @@ import {
   TextInput,
 } from 'components'
 import { ProfileTextInput } from 'components'
+import MobileGoogleProfile from 'components/profile/mobileGoogleProfile/MobileGoogleProfile'
 import { useProfile } from 'hooks'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -74,162 +76,165 @@ const Profile = () => {
             <BackArrowIcon width='20' height='20' />
           </Link>
           <Sidebar userData={userData} userQuery={userQuery} />
-          <div className='ml-[28rem] xl:ml-[16rem] lg:hidden max-w-[62.375rem] relative'>
-            {showNewEmailModal && (
-              <AddNewEmailModal
-                showOrHideEmailModal={showNewEmailModalHandler}
-              />
-            )}
-            <p className='text-2xl mb-[7.875rem] font-medium'>
-              {t('common:my_profile')}
-            </p>
-            <div className=' bg-profile-dark-blue pb-10 rounded-xl relative pt-[12.188rem] px-[4.813rem] xl:px-[2rem]'>
-              <FormProvider {...avatarForm}>
-                <form className='flex flex-col gap-3 items-center absolute -top-16 left-1/2 -translate-x-1/2'>
-                  <ImageInput name='avatar' />
-                </form>
-              </FormProvider>
+          {userData.google_id && <GoogleProfile userData={userData} />}
+          {!userData.google_id && (
+            <div className='ml-[28rem] xl:ml-[16rem] lg:hidden max-w-[62.375rem] relative'>
+              {showNewEmailModal && (
+                <AddNewEmailModal
+                  showOrHideEmailModal={showNewEmailModalHandler}
+                />
+              )}
+              <p className='text-2xl mb-[7.875rem] font-medium'>
+                {t('common:my_profile')}
+              </p>
+              <div className=' bg-profile-dark-blue pb-10 rounded-xl relative pt-[12.188rem] px-[4.813rem] xl:px-[2rem]'>
+                <FormProvider {...avatarForm}>
+                  <form className='flex flex-col gap-3 items-center absolute -top-16 left-1/2 -translate-x-1/2'>
+                    <ImageInput name='avatar' />
+                  </form>
+                </FormProvider>
 
-              <div className='mb-10'>
-                <label className='mb-2 inline-block'>
-                  {t('common:username')}
-                </label>
-                <div className='flex items-baseline gap-[2.063rem]'>
-                  {!userNameEditing && (
-                    <div className='max-w-[33rem] w-full mb-6 bg-very-light-grey text-input-black px-[1.063rem] py-[0.563rem] rounded-[0.3rem]'>
-                      {userData?.name}
-                    </div>
-                  )}
-                  {userNameEditing && (
-                    <FormProvider {...userNameForm}>
-                      <form className='max-w-[33rem] w-full'>
-                        <ProfileTextInput name='username' error={error} />
-                      </form>
-                    </FormProvider>
-                  )}
-                  <button
-                    onClick={() => setUserNameEditing(true)}
-                    className='text-xl xl:text-base text-very-light-grey'
-                  >
-                    {t('common:edit')}
-                  </button>
-                </div>
-                <div className='max-w-[33rem] bg-very-light-grey h-[0.006rem] bg-opacity-25 mt-14'></div>
-              </div>
-
-              <div>
-                {userData?.emails?.map((email) => (
-                  <div key={email.id} className='mb-8'>
-                    <label className='mb-2 inline-block'>
-                      {t('common:email')}
-                    </label>
-                    <div className='flex items-center'>
-                      <div
-                        className={`min-w-[33rem] mr-[2.063rem] relative text-black bg-very-light-grey px-[1.063rem] py-[0.563rem] rounded-[0.3rem] ${
-                          email.is_primary &&
-                          '!text-white bg-primary-green border-primary-border border bg-opacity-20 '
-                        } ${
-                          !email.email_verified_at &&
-                          'bg-not-verified-yellow !text-white border-not-verified-border border bg-opacity-20'
-                        } `}
-                      >
-                        {email.email}
-                        <span className='absolute top-1/2 -translate-y-1/2 right-4'>
-                          {email.is_primary ? <PrimaryEmailCheck /> : ''}
-                          {!email.email_verified_at ? (
-                            <NotVerifiedEmailWarning />
-                          ) : (
-                            ''
-                          )}
-                        </span>
+                <div className='mb-10'>
+                  <label className='mb-2 inline-block'>
+                    {t('common:username')}
+                  </label>
+                  <div className='flex items-baseline gap-[2.063rem]'>
+                    {!userNameEditing && (
+                      <div className='max-w-[33rem] w-full mb-6 bg-very-light-grey text-input-black px-[1.063rem] py-[0.563rem] rounded-[0.3rem]'>
+                        {userData?.name}
                       </div>
-                      {email.is_primary ? (
-                        <p className='text-xl xl:text-base text-very-light-grey'>
-                          {t('common:primary_email')}
-                        </p>
-                      ) : !email.email_verified_at ? (
-                        <div className='flex gap-5 xl:gap-2'>
-                          <p className='text-xl xl:text-base text-very-light-grey'>
-                            {t('common:not_verified')}
-                          </p>
-                          <span>|</span>
-                          <button
-                            onClick={() => deleteEmailHandler(email.id)}
-                            className='text-xl xl:text-base text-very-light-grey'
-                          >
-                            {t('common:remove')}
-                          </button>
-                        </div>
-                      ) : (
-                        <div className='flex gap-5'>
-                          <button
-                            onClick={() => makeEmailPrimaryHandler(email.id)}
-                            className='text-xl text-very-light-grey'
-                          >
-                            {t('common:make_this_primary')}
-                          </button>
-                          <span>|</span>
-                          <button
-                            onClick={() => deleteEmailHandler(email.id)}
-                            className='text-xl text-very-light-grey'
-                          >
-                            {t('common:remove')}
-                          </button>
-                        </div>
-                      )}
-                    </div>
+                    )}
+                    {userNameEditing && (
+                      <FormProvider {...userNameForm}>
+                        <form className='max-w-[33rem] w-full'>
+                          <ProfileTextInput name='username' error={error} />
+                        </form>
+                      </FormProvider>
+                    )}
+                    <button
+                      onClick={() => setUserNameEditing(true)}
+                      className='text-xl xl:text-base text-very-light-grey'
+                    >
+                      {t('common:edit')}
+                    </button>
                   </div>
-                ))}
+                  <div className='max-w-[33rem] bg-very-light-grey h-[0.006rem] bg-opacity-25 mt-14'></div>
+                </div>
 
-                <button
-                  onClick={() => showNewEmailModalHandler(true)}
-                  className='border border-border-white rounded-[0.3rem] px-[1.594rem] py-[0.438rem] text-xl mt-10'
-                >
-                  {t('common:add_new_email')}
-                </button>
-                <div className='w-[33rem] bg-very-light-grey h-[0.006rem] bg-opacity-25 mt-14'></div>
-              </div>
-
-              <div className='mt-10'>
-                <label className='mb-2 inline-block'>
-                  {t('common:password')}
-                </label>
-                <div className='flex items-center gap-[2.063rem]'>
-                  {!passwordEditing && (
-                    <div className='w-[33rem] bg-very-light-grey text-input-black px-[1.063rem] py-[0.563rem] rounded-[0.3rem]'>
-                      ●●●●●●●●
+                <div>
+                  {userData?.emails?.map((email) => (
+                    <div key={email.id} className='mb-8'>
+                      <label className='mb-2 inline-block'>
+                        {t('common:email')}
+                      </label>
+                      <div className='flex items-center'>
+                        <div
+                          className={`min-w-[33rem] mr-[2.063rem] relative text-black bg-very-light-grey px-[1.063rem] py-[0.563rem] rounded-[0.3rem] ${
+                            email.is_primary &&
+                            '!text-white bg-primary-green border-primary-border border bg-opacity-20 '
+                          } ${
+                            !email.email_verified_at &&
+                            'bg-not-verified-yellow !text-white border-not-verified-border border bg-opacity-20'
+                          } `}
+                        >
+                          {email.email}
+                          <span className='absolute top-1/2 -translate-y-1/2 right-4'>
+                            {email.is_primary ? <PrimaryEmailCheck /> : ''}
+                            {!email.email_verified_at ? (
+                              <NotVerifiedEmailWarning />
+                            ) : (
+                              ''
+                            )}
+                          </span>
+                        </div>
+                        {email.is_primary ? (
+                          <p className='text-xl xl:text-base text-very-light-grey'>
+                            {t('common:primary_email')}
+                          </p>
+                        ) : !email.email_verified_at ? (
+                          <div className='flex gap-5 xl:gap-2'>
+                            <p className='text-xl xl:text-base text-very-light-grey'>
+                              {t('common:not_verified')}
+                            </p>
+                            <span>|</span>
+                            <button
+                              onClick={() => deleteEmailHandler(email.id)}
+                              className='text-xl xl:text-base text-very-light-grey'
+                            >
+                              {t('common:remove')}
+                            </button>
+                          </div>
+                        ) : (
+                          <div className='flex gap-5'>
+                            <button
+                              onClick={() => makeEmailPrimaryHandler(email.id)}
+                              className='text-xl text-very-light-grey'
+                            >
+                              {t('common:make_this_primary')}
+                            </button>
+                            <span>|</span>
+                            <button
+                              onClick={() => deleteEmailHandler(email.id)}
+                              className='text-xl text-very-light-grey'
+                            >
+                              {t('common:remove')}
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  {passwordEditing && (
-                    <FormProvider {...passwordForm}>
-                      <form className='max-w-[33rem] w-full'>
-                        <ProfileTextInput name='password' type='password' />
-                      </form>
-                    </FormProvider>
-                  )}
+                  ))}
+
                   <button
-                    onClick={() => setPasswordEditing(true)}
-                    className='text-xl xl:text-base text-very-light-grey'
+                    onClick={() => showNewEmailModalHandler(true)}
+                    className='border border-border-white rounded-[0.3rem] px-[1.594rem] py-[0.438rem] text-xl mt-10'
                   >
-                    {t('common:edit')}
+                    {t('common:add_new_email')}
                   </button>
+                  <div className='w-[33rem] bg-very-light-grey h-[0.006rem] bg-opacity-25 mt-14'></div>
+                </div>
+
+                <div className='mt-10'>
+                  <label className='mb-2 inline-block'>
+                    {t('common:password')}
+                  </label>
+                  <div className='flex items-center gap-[2.063rem]'>
+                    {!passwordEditing && (
+                      <div className='w-[33rem] bg-very-light-grey text-input-black px-[1.063rem] py-[0.563rem] rounded-[0.3rem]'>
+                        ●●●●●●●●
+                      </div>
+                    )}
+                    {passwordEditing && (
+                      <FormProvider {...passwordForm}>
+                        <form className='max-w-[33rem] w-full'>
+                          <ProfileTextInput name='password' type='password' />
+                        </form>
+                      </FormProvider>
+                    )}
+                    <button
+                      onClick={() => setPasswordEditing(true)}
+                      className='text-xl xl:text-base text-very-light-grey'
+                    >
+                      {t('common:edit')}
+                    </button>
+                  </div>
                 </div>
               </div>
+              {(userNameEditing ||
+                passwordEditing ||
+                userData.profile_image_file) && (
+                <div className='flex gap-4 text-xl  justify-end mt-12'>
+                  <button>{t('common:cancel')}</button>
+                  <button
+                    className='bg-error-red-border py-[0.563rem] px-[1.063rem] rounded-[0.3rem] '
+                    onClick={onSaveChanges}
+                  >
+                    {t('common:save_changes')}
+                  </button>
+                </div>
+              )}
             </div>
-            {(userNameEditing ||
-              passwordEditing ||
-              userData.profile_image_file) && (
-              <div className='flex gap-4 text-xl  justify-end mt-12'>
-                <button>{t('common:cancel')}</button>
-                <button
-                  className='bg-error-red-border py-[0.563rem] px-[1.063rem] rounded-[0.3rem] '
-                  onClick={onSaveChanges}
-                >
-                  {t('common:save_changes')}
-                </button>
-              </div>
-            )}
-          </div>
+          )}
           {showConfirmChangesModal && (
             <ConfirmChangesModal
               onClick={
@@ -241,62 +246,66 @@ const Profile = () => {
               }
             />
           )}
-          {!showNewUsernameForm && !showNewPasswordForm && !showEmailsTab && (
-            <div className='hidden lg:block bg-mobile-grey w-full rounded-xl pb-16 relative px-8'>
-              <FormProvider {...mobileAvatarForm}>
-                <form
-                  id='mobile_avatar_form'
-                  className='flex flex-col gap-3 items-center mt-10'
-                  onSubmit={mobileAvatarForm.handleSubmit(mobileAvatarSubmit)}
-                >
-                  <ImageInput name='mobile_avatar' />
-                </form>
-              </FormProvider>
+          {userData.google_id && <MobileGoogleProfile userData={userData} />}
+          {!showNewUsernameForm &&
+            !showNewPasswordForm &&
+            !showEmailsTab &&
+            !userData.google_id && (
+              <div className='hidden lg:block bg-mobile-grey w-full rounded-xl pb-16 relative px-8'>
+                <FormProvider {...mobileAvatarForm}>
+                  <form
+                    id='mobile_avatar_form'
+                    className='flex flex-col gap-3 items-center mt-10'
+                    onSubmit={mobileAvatarForm.handleSubmit(mobileAvatarSubmit)}
+                  >
+                    <ImageInput name='mobile_avatar' />
+                  </form>
+                </FormProvider>
 
-              <div className='flex flex-col gap-1'>
-                <p>{t('common:username')}</p>
-                <div className='pb-4 border-b border-very-light-grey flex justify-between text-[1.125rem]'>
-                  <p>{userData.name}</p>
+                <div className='flex flex-col gap-1'>
+                  <p>{t('common:username')}</p>
+                  <div className='pb-4 border-b border-very-light-grey flex justify-between text-[1.125rem]'>
+                    <p>{userData.name}</p>
+                    <button
+                      onClick={() => showNewUsernameFormHandler(true)}
+                      className='text-very-light-grey'
+                    >
+                      {t('common:edit')}
+                    </button>
+                  </div>
+                </div>
+
+                <div className='flex flex-col gap-1 mt-8'>
+                  <p>{t('common:password')}</p>
+                  <div className='pb-4 border-b border-very-light-grey flex justify-between text-[1.125rem]'>
+                    <p>••••••••••••</p>
+                    <button
+                      onClick={() => {
+                        showNewPasswordFormHandler(true)
+                      }}
+                      className='text-very-light-grey'
+                    >
+                      {t('common:edit')}
+                    </button>
+                  </div>
+                </div>
+
+                <div className='flex justify-between mt-8'>
+                  <p>{t('common:email')}</p>
                   <button
-                    onClick={() => showNewUsernameFormHandler(true)}
+                    onClick={() => showEmailsTabHandler(true)}
                     className='text-very-light-grey'
                   >
-                    {t('common:edit')}
+                    <RightArrowIcon />
                   </button>
                 </div>
-              </div>
-
-              <div className='flex flex-col gap-1 mt-8'>
-                <p>{t('common:password')}</p>
-                <div className='pb-4 border-b border-very-light-grey flex justify-between text-[1.125rem]'>
-                  <p>••••••••••••</p>
-                  <button
-                    onClick={() => {
-                      showNewPasswordFormHandler(true)
-                    }}
-                    className='text-very-light-grey'
-                  >
-                    {t('common:edit')}
+                {userData.profile_image_file && (
+                  <button form='mobile_avatar_form' className='mt-10'>
+                    {t('common:save')}
                   </button>
-                </div>
+                )}
               </div>
-
-              <div className='flex justify-between mt-8'>
-                <p>{t('common:email')}</p>
-                <button
-                  onClick={() => showEmailsTabHandler(true)}
-                  className='text-very-light-grey'
-                >
-                  <RightArrowIcon />
-                </button>
-              </div>
-              {userData.profile_image_file && (
-                <button form='mobile_avatar_form' className='mt-10'>
-                  {t('common:save')}
-                </button>
-              )}
-            </div>
-          )}
+            )}
           {showNewUsernameForm && (
             <div>
               <FormProvider {...mobileUserNameForm}>

@@ -43,10 +43,7 @@ export type UserData = {
   profile_image_file: string
 }
 
-// { id: string; name: string;
-//   emails: { id: string; email: string; is_primary: string;
-//     email_verified_at: string; }[]; has_verified_email: string; google_id: string;
-//     new_password: string; profile_image_file: string; profile_image_url: string; }
+
 
 export type UpdateUserDataType = {
   name: string
