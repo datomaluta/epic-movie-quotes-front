@@ -1,1 +1,9 @@
-{"email_format":"არავალიდური მეილი","field_required":"ეს ველი სავალდებულოა","field_max_length":"მაქსიმუმ 15 სიმბოლო","field_min_length":"მინიმუმ სამი სიმბოლო","password_min_length":"მინიმუმ 8 სიმბოლო","password_does_not_match":"თქვენი პაროლები არ ემთხვევა","only_letters_and_numbers":"მხოლოდ პატარა ასოები და რიცხვები"}
+{
+  "email_format": "არავალიდური მეილი",
+  "field_required": "ეს ველი სავალდებულოა",
+  "field_max_length": "მაქსიმუმ 15 სიმბოლო",
+  "field_min_length": "მინიმუმ სამი სიმბოლო",
+  "password_min_length": "მინიმუმ 8 სიმბოლო",
+  "password_does_not_match": "თქვენი პაროლები არ ემთხვევა",
+  "only_letters_and_numbers": "მხოლოდ პატარა ასოები და რიცხვები"
+}

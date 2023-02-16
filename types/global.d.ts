@@ -43,8 +43,6 @@ export type UserData = {
   profile_image_file: string
 }
 
-
-
 export type UpdateUserDataType = {
   name: string
   password: string

@@ -1,1 +1,9 @@
-{"email_format":"This field requires valid email","field_required":"This field is required","field_max_length":"This field must have max 15 symbols","field_min_length":"This field must have min 3 symbols","password_min_length":"This field must have min 8 symbols","password_does_not_match":"Your passwords does not match","only_letters_and_numbers":"Only lowercase letters and numbers"}
+{
+  "email_format": "This field requires valid email",
+  "field_required": "This field is required",
+  "field_max_length": "This field must have max 15 symbols",
+  "field_min_length": "This field must have min 3 symbols",
+  "password_min_length": "This field must have min 8 symbols",
+  "password_does_not_match": "Your passwords does not match",
+  "only_letters_and_numbers": "Only lowercase letters and numbers"
+}
