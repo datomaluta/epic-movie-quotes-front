@@ -12,6 +12,8 @@ const useProfileTextInput = (name: string) => {
     control: form.control,
   })
 
+  console.log(inputData)
+
   useEffect(() => {
     dispatch(userActions.updateUserData({ type: name, value: inputData }))
   }, [dispatch, name, inputData])

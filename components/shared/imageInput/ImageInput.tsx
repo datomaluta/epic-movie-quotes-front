@@ -9,7 +9,7 @@ const ImageInput: React.FC<PropsType> = (props) => {
   return (
     <div className='mb-10 flex flex-col items-center'>
       <input
-        id='avatar'
+        id={props.name}
         draggable
         {...form.register(props.name)}
         type='file'
@@ -41,7 +41,7 @@ const ImageInput: React.FC<PropsType> = (props) => {
           <Image src={bigAvatar} alt='avatar' />
         </div>
       )}
-      <label htmlFor='avatar' className='block mt-4 cursor-pointer'>
+      <label htmlFor={props.name} className='block mt-4 cursor-pointer'>
         Upload new photo
       </label>
     </div>

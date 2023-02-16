@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
+import { userActions } from 'store'
 
 export const useTextInput = (name: string) => {
   const form = useFormContext()
@@ -18,10 +20,17 @@ export const useTextInput = (name: string) => {
     setPasswordFieldType(inputRef.current!.type)
   }
 
-  useWatch({
+  const inputData = useWatch({
     name: name,
     control: form.control,
   })
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(userActions.updateUserData({ type: name, value: inputData }))
+  }, [dispatch, name, inputData])
+
+  console.log(inputData)
 
   const { ref, ...rest } = form.register(name)
 

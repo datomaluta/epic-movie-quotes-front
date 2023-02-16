@@ -9,6 +9,7 @@ const initialState = {
   new_password: '',
   profile_image_file: '',
   profile_image_url: '',
+  new_email: '',
 }
 
 const userSlice = createSlice({
@@ -34,6 +35,9 @@ const userSlice = createSlice({
       }
       if (action.payload.type === 'password') {
         state.new_password = action.payload.value
+      }
+      if (action.payload.type === 'email') {
+        state.new_email = action.payload.value
       }
     },
     updatePassword(state, action) {

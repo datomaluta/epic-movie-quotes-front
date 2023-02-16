@@ -5,7 +5,9 @@ export const getUserData = async () => {
   return await instance.get('/api/userdata')
 }
 
-export const updateUserData = async (data: UpdateFormData) => {
+export const updateUserData = async (
+  data: UpdateFormData | { name: string } | { password: string }
+) => {
   return await instance.post(`/api/user-data/update`, data)
 }
 

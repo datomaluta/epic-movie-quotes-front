@@ -4,10 +4,13 @@ import { useForm } from 'react-hook-form'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useDispatch, useSelector } from 'react-redux'
 import {
+  forgotPasswordValidationSchema,
+  newPasswordValidationSchema,
   newUserNameValidationSchema,
   updatePasswordValidationSchema,
 } from 'schemas'
 import {
+  addNewEmail,
   deleteEmail,
   fetchCSRFToken,
   getUserData,
@@ -25,6 +28,8 @@ const useProfile = () => {
   const [showNewPasswordForm, setShowNewPasswordForm] = useState(false)
   const [showEmailsTab, setShowEmailsTab] = useState(false)
   const [showMobileNewEmailForm, setShowMobileNewEmailForm] = useState(false)
+  const [showConfirmChangesModal, setShowConfirmChangesModal] = useState(false)
+  const [whichFieldIsSubmiting, setWhichFieldIsSubmiting] = useState('')
   const [error, setError] = useState('')
   const queryClient = useQueryClient()
   const dispatch = useDispatch()
@@ -68,6 +73,15 @@ const useProfile = () => {
     },
   })
 
+  const { mutate: newEmailMutation } = useMutation(addNewEmail, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('userData')
+    },
+    onError: () => {
+      setError('Something went wrong!')
+    },
+  })
+
   const onSaveChanges = async () => {
     if (
       Object.keys(userNameForm.formState.errors).length === 0 &&
@@ -79,7 +93,6 @@ const useProfile = () => {
       passwordEditing && formData.append('password', userData.new_password)
       userData.profile_image_file &&
         formData.append('image', userData.profile_image_file)
-      formData.append('_method', 'PATCH')
       userDataMutate(formData)
     }
   }
@@ -117,14 +130,57 @@ const useProfile = () => {
     setShowEmailsTab(param)
   }
 
+  const mobileAvatarForm = useForm({
+    mode: 'all',
+    defaultValues: { mobile_avatar: '' },
+  })
+
   const mobileUserNameForm = useForm({
     mode: 'all',
     resolver: yupResolver(newUserNameValidationSchema),
-    // defaultValues: { username: userQuery.data?.data?.user?.name },
+    defaultValues: { username: userQuery.data?.data?.user?.name },
   })
 
-  const mobileUserNameSubmit = (data) => {
-    console.log(data)
+  const mobilePasswordForm = useForm({
+    mode: 'all',
+    resolver: yupResolver(newPasswordValidationSchema),
+  })
+
+  const mobileEmailForm = useForm({
+    mode: 'all',
+    resolver: yupResolver(forgotPasswordValidationSchema),
+  })
+
+  const mobileAvatarSubmit = async () => {
+    const formData = new FormData()
+    formData.append('image', userData.profile_image_file)
+    userDataMutate(formData)
+    queryClient.invalidateQueries('userData')
+  }
+
+  const mobileUserNameSubmit = async () => {
+    userDataMutate({ name: userData.name })
+    queryClient.invalidateQueries('userData')
+    setShowConfirmChangesModal(false)
+    setShowNewUsernameForm(false)
+  }
+
+  const mobilePasswordSubmit = async () => {
+    userDataMutate({ password: userData.new_password })
+    setShowConfirmChangesModal(false)
+    setShowNewPasswordForm(false)
+  }
+
+  const mobileEmailSubmit = async () => {
+    newEmailMutation({ email: userData.new_email })
+  }
+
+  const showConfirmChangesModalHandler = (
+    param: boolean,
+    fieldName: string
+  ) => {
+    setWhichFieldIsSubmiting(fieldName)
+    setShowConfirmChangesModal(param)
   }
 
   return {
@@ -153,6 +209,15 @@ const useProfile = () => {
     showMobileNewEmailFormHandler,
     showEmailsTab,
     showEmailsTabHandler,
+    showConfirmChangesModal,
+    showConfirmChangesModalHandler,
+    whichFieldIsSubmiting,
+    mobilePasswordForm,
+    mobilePasswordSubmit,
+    mobileEmailForm,
+    mobileEmailSubmit,
+    mobileAvatarForm,
+    mobileAvatarSubmit,
   }
 }
 

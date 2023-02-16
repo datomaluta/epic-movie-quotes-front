@@ -1,6 +1,7 @@
 import {
   AddNewEmailModal,
   BackArrowIcon,
+  ConfirmChangesModal,
   Header,
   ImageInput,
   NotVerifiedEmailWarning,
@@ -41,13 +42,25 @@ const Profile = () => {
     showMobileNewEmailFormHandler,
     showEmailsTab,
     showEmailsTabHandler,
+    showConfirmChangesModal,
+    showConfirmChangesModalHandler,
+    whichFieldIsSubmiting,
+    mobilePasswordForm,
+    mobilePasswordSubmit,
+    mobileEmailForm,
+    mobileEmailSubmit,
+    mobileAvatarForm,
+    mobileAvatarSubmit,
   } = useProfile()
 
   return (
     <div className='bg-news-feed  text-white min-h-screen'>
       <Header />
       <div className='pt-[7.375rem] px-[4.313rem] sm:px-0 flex py-60 lg:flex-col'>
-        <Link href='/news-feed' className='sm:ml-10 mb-6'>
+        <Link
+          href='/news-feed'
+          className='sm:ml-10 mb-6 hidden lg:inline-block'
+        >
           <BackArrowIcon width='20' height='20' />
         </Link>
         <Sidebar userData={userData} userQuery={userQuery} />
@@ -197,32 +210,33 @@ const Profile = () => {
             </div>
           )}
         </div>
-
+        {showConfirmChangesModal && (
+          <ConfirmChangesModal
+            onClick={
+              whichFieldIsSubmiting === 'username'
+                ? mobileUserNameSubmit
+                : whichFieldIsSubmiting === 'password'
+                ? mobilePasswordSubmit
+                : mobileEmailSubmit
+            }
+          />
+        )}
         {!showNewUsernameForm && !showNewPasswordForm && !showEmailsTab && (
-          <div className='bg-mobile-grey w-full rounded-xl h-[40.563rem] px-8'>
-            {/* <div className='w-screen h-screen fixed top-0 left-0 z-50 '>
-              <div className='w-full h-full bg-confirm-changes bg-opacity-70 backdrop-blur-sm'></div>
-              <div className='rounded-[0.625rem] px-8 w-[22.75rem] h-[13.188rem] absolute top-36 left-1/2 -translate-x-1/2 bg-email-modal'>
-                <p className='text-center mt-16 pb-11 border-b border-grey-border mb-6'>
-                  Are you sure to make changes?
-                </p>
-                <div className='flex justify-between'>
-                  <button>Cancel</button>
-                  <button className='bg-dark-red px-4 py-2 rounded'>
-                    Confirm
-                  </button>
-                </div>
-              </div>
-            </div> */}
-            <FormProvider {...avatarForm}>
-              <form className='flex flex-col gap-3 items-center mt-10'>
-                <ImageInput name='avatar' />
+          <div className='hidden lg:block bg-mobile-grey w-full rounded-xl pb-16 relative px-8'>
+            <FormProvider {...mobileAvatarForm}>
+              <form
+                id='mobile_avatar_form'
+                className='flex flex-col gap-3 items-center mt-10'
+                onSubmit={mobileAvatarForm.handleSubmit(mobileAvatarSubmit)}
+              >
+                <ImageInput name='mobile_avatar' />
               </form>
             </FormProvider>
+
             <div className='flex flex-col gap-1'>
               <p>Username</p>
               <div className='pb-4 border-b border-very-light-grey flex justify-between text-[1.125rem]'>
-                <p>Nino Tabagari</p>
+                <p>{userData.name}</p>
                 <button
                   onClick={() => showNewUsernameFormHandler(true)}
                   className='text-very-light-grey'
@@ -256,6 +270,11 @@ const Profile = () => {
                 <RightArrowIcon />
               </button>
             </div>
+            {userData.profile_image_file && (
+              <button form='mobile_avatar_form' className='mt-10'>
+                save
+              </button>
+            )}
           </div>
         )}
         {showNewUsernameForm && (
@@ -266,11 +285,10 @@ const Profile = () => {
                 onSubmit={mobileUserNameForm.handleSubmit(mobileUserNameSubmit)}
                 className='bg-mobile-grey rounded-xl px-8 pt-8 pb-16'
               >
-                <TextInput
+                <ProfileTextInput
                   label='Enter new username'
-                  type='text'
                   placeholder='username'
-                  name='mobile_username'
+                  name='username'
                 />
               </form>
             </FormProvider>
@@ -279,7 +297,7 @@ const Profile = () => {
                 Cancel
               </button>
               <button
-                form='mobile_username'
+                onClick={() => showConfirmChangesModalHandler(true, 'username')}
                 className='bg-dark-red py-2 px-5 rounded'
               >
                 Add
@@ -290,7 +308,7 @@ const Profile = () => {
         {showNewPasswordForm && (
           <div>
             <div className='bg-mobile-grey px-8 py-6 rounded-xl'>
-              <FormProvider {...mobileUserNameForm}>
+              <FormProvider {...mobilePasswordForm}>
                 <div className='bg-gradient-dark px-6 py-6 rounded'>
                   <p className='mb-4'>Password should contain:</p>
                   <div>
@@ -305,8 +323,8 @@ const Profile = () => {
                 </div>
                 <form
                   id='mobile_username'
-                  onSubmit={mobileUserNameForm.handleSubmit(
-                    mobileUserNameSubmit
+                  onSubmit={mobilePasswordForm.handleSubmit(
+                    mobilePasswordSubmit
                   )}
                   className='rounded-xl mt-10'
                 >
@@ -335,7 +353,8 @@ const Profile = () => {
                 Cancel
               </button>
               <button
-                form='mobile_username'
+                // form='mobile_username'
+                onClick={() => showConfirmChangesModalHandler(true, 'password')}
                 className='bg-dark-red py-2 px-5 rounded'
               >
                 Add
@@ -383,11 +402,18 @@ const Profile = () => {
                       </p>
                     )}
                     {!email.is_primary && email.email_verified_at && (
-                      <button className='border border-border-white rounded-[0.3rem] px-[1.594rem] py-[0.438rem]'>
+                      <button
+                        onClick={() => makeEmailPrimaryHandler(email.id)}
+                        className='border border-border-white rounded-[0.3rem] px-[1.594rem] py-[0.438rem]'
+                      >
                         Make this primary
                       </button>
                     )}
-                    {!email.is_primary && <button>Remove</button>}
+                    {!email.is_primary && (
+                      <button onClick={() => deleteEmailHandler(email.id)}>
+                        Remove
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -406,17 +432,17 @@ const Profile = () => {
 
         {showMobileNewEmailForm && (
           <div className=''>
-            <FormProvider {...mobileUserNameForm}>
+            <FormProvider {...mobileEmailForm}>
               <form
-                id='mobile_username'
-                onSubmit={mobileUserNameForm.handleSubmit(mobileUserNameSubmit)}
+                id='myform'
+                onSubmit={mobileEmailForm.handleSubmit(mobileEmailSubmit)}
                 className='bg-mobile-grey rounded-xl px-8 pt-8 pb-16'
               >
-                <TextInput
+                <ProfileTextInput
                   label='Enter new Email'
                   type='text'
                   placeholder='email'
-                  name='mobile_email'
+                  name='email'
                 />
               </form>
             </FormProvider>
@@ -425,7 +451,9 @@ const Profile = () => {
                 Cancel
               </button>
               <button
-                form='mobile_username'
+                // form='myform'
+                // type='submit'
+                onClick={() => showConfirmChangesModalHandler(true, 'email')}
                 className='bg-dark-red py-2 px-5 rounded'
               >
                 Add

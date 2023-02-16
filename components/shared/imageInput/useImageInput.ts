@@ -15,6 +15,8 @@ const useImageInput = (name: string) => {
     control: form.control,
   })
 
+  console.log(name, inputData)
+
   const [baseImage, setBaseImage] = useState('')
 
   useEffect(() => {
