@@ -2,14 +2,15 @@ import Image from 'next/image'
 import useImageInput from './useImageInput'
 import { bigAvatar } from 'public'
 import { PropsType } from './types'
+import { t } from 'i18next'
 
 const ImageInput: React.FC<PropsType> = (props) => {
-  const { form, baseImage, userData } = useImageInput(props.name)
+  const { form, baseImage, userData, t } = useImageInput(props.name)
 
   return (
     <div className='mb-10 flex flex-col items-center'>
       <input
-        id='avatar'
+        id={props.name}
         draggable
         {...form.register(props.name)}
         type='file'
@@ -41,8 +42,8 @@ const ImageInput: React.FC<PropsType> = (props) => {
           <Image src={bigAvatar} alt='avatar' />
         </div>
       )}
-      <label htmlFor='avatar' className='block mt-4 cursor-pointer'>
-        Upload new photo
+      <label htmlFor={props.name} className='block mt-4 cursor-pointer'>
+        {t('common:upload_new_photo')}
       </label>
     </div>
   )

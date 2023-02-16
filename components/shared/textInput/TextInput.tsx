@@ -32,7 +32,7 @@ const TextInput: React.FC<PropsType> = (props) => {
         {props.label}
         <span className='text-red-danger inline-block ml-1'>*</span>
       </label>
-      <div className='relative'>
+      <div className='relative max-w-[22.5rem]'>
         <input
           {...rest}
           ref={(e) => {
@@ -45,8 +45,8 @@ const TextInput: React.FC<PropsType> = (props) => {
             isInValid ? 'border-error-red-border' : 'border-transparent'
           } ${
             !isInValid && isDirty && 'border-success-green'
-          }  py-2 px-2 w-[22.5rem] block placeholder:text-light-grey placeholder rounded
-          bg-very-light-grey outline-none border-2 focus:border-focus-blue pr-13`}
+          }  py-2 px-2 w-full block placeholder:text-light-grey placeholder rounded
+          bg-very-light-grey outline-none border-2 focus:border-focus-blue pr-13 text-black`}
         />
         {isInValid && (
           <div

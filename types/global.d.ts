@@ -35,10 +35,12 @@ export type UserData = {
   id: number
   name: string
   emails: [
-    { id: id; email: string; is_primary: string; email_verified_at: string }
+    { id: number; email: string; is_primary: number; email_verified_at: string }
   ]
-  has_verified_email: string
+  has_verified_email: number
   google_id: string
+  profile_image_url: string
+  profile_image_file: string
 }
 
 export type UpdateUserDataType = {
@@ -57,3 +59,8 @@ export type NewEmailType = {
 }
 
 export type SetState<T> = Dispatch<SetStateAction<T>>
+
+export type BackArrowIconType = {
+  width?: string
+  height?: string
+}

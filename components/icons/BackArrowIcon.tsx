@@ -1,8 +1,10 @@
-const BackArrowIcon: React.FC = () => {
+import { BackArrowIconType } from 'types'
+
+const BackArrowIcon: React.FC<BackArrowIconType> = (props) => {
   return (
     <svg
-      width='13'
-      height='10'
+      width={props.width}
+      height={props.height}
       viewBox='0 0 13 10'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

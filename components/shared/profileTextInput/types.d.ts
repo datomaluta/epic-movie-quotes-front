@@ -3,4 +3,5 @@ export type PropsType = {
   placeholder?: string
   type?: string
   error?: string
+  label?: string
 }

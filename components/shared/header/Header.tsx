@@ -8,7 +8,8 @@ import {
 import { useLogout } from 'hooks'
 
 const Header: React.FC = () => {
-  const { logoutHandler } = useLogout()
+  const { logoutHandler, t } = useLogout()
+
   return (
     <header className='flex items-center fixed z-50 w-full bg-header-dark bg-opacity-75 backdrop-blur justify-between h-[5.375rem] px-[4.313rem] sm:px-[2.375rem]'>
       <div className='text-dark-yellow font-medium sm:hidden'>MOVIE QUOTES</div>
@@ -37,7 +38,7 @@ const Header: React.FC = () => {
           onClick={logoutHandler}
           className='border border-white px-[1.594rem] py-[0.438rem] rounded sm:hidden'
         >
-          Log out
+          {t('common:logout')}
         </button>
       </nav>
     </header>

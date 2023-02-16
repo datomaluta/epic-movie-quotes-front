@@ -1,6 +1,7 @@
 import { convertBase64 } from 'helpers'
 import { useEffect, useState } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'store'
 import { userActions } from 'store'
@@ -30,7 +31,9 @@ const useImageInput = (name: string) => {
     }
   }, [inputData, dispatch])
 
-  return { form, baseImage, userData }
+  const { t } = useTranslation()
+
+  return { form, baseImage, userData, t }
 }
 
 export default useImageInput
