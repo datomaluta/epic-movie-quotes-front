@@ -1,18 +1,21 @@
-import { Header, HomeIcon, MovieIcon } from 'components'
+import { Header, HomeIcon, MovieIcon, Sidebar } from 'components'
 import { profilePicture } from 'public'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useNewsFeed } from 'hooks'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const NewsFeed = () => {
-  const { userData, error } = useNewsFeed()
+  const { userData, error, userQuery } = useNewsFeed()
 
   return (
     <div className='bg-news-feed h-[1200px] text-white'>
       <Header />
       <div className='pt-[7.375rem] px-[4.313rem] flex'>
-        <p>{error}</p>
-        <div className='flex fixed flex-col gap-11 w-[33.125rem] '>
+        {/* <p>{error}</p> */}
+        <Sidebar userData={userData} userQuery={userQuery} />
+        {/* <div className='flex fixed flex-col gap-11 w-[33.125rem] '>
           <Link href='/profile'>
             <div className='flex gap-6 w-max'>
               <Image src={profilePicture} alt='profile picture' />
@@ -30,11 +33,24 @@ const NewsFeed = () => {
             <MovieIcon />
             <p className='text-2xl'>List of movies</p>
           </div>
-        </div>
+        </div> */}
         <div className='bg-red-500 ml-[33.125rem]'>posts</div>
       </div>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale!, [
+        'home',
+        'common',
+        'validations',
+      ])),
+      locale,
+    },
+  }
 }
 
 export default NewsFeed

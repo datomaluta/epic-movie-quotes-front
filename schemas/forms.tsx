@@ -72,3 +72,30 @@ export const updatePasswordValidationSchema = Yup.object({
       message: 'validations:only_letters_and_numbers',
     }),
 })
+
+export const addMovieValidationSchema = Yup.object({
+  movie_name_eng: Yup.string()
+    .required('validations:field_required')
+    .matches(/^[a-zA-Z0-9]+$/, {
+      message: 'validations:only_letters_and_numbers',
+    }),
+  movie_name_ka: Yup.string()
+    .required('validations:field_required')
+    .matches(/^[ა-ჰ0-9]+$/, {
+      message: 'validations:only_georgian_letters_and_numbers',
+    }),
+  director_eng: Yup.string()
+    .required('validations:field_required')
+    .matches(/^[a-zA-Z]+$/, {
+      message: 'validations:only_english_letters',
+    }),
+  director_ka: Yup.string()
+    .required('validations:field_required')
+    .matches(/^[ა-ჰ]+$/, {
+      message: 'validations:only_georgian_letters',
+    }),
+
+  description_eng: Yup.string().required('validations:field_required'),
+  description_ka: Yup.string().required('validations:field_required'),
+  release_date: Yup.number().required('validations:field_required'),
+})
