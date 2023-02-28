@@ -12,7 +12,7 @@ const InputCorrectIcon: React.FC = () => {
         fill='#198754'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default InputCorrectIcon;
+export default InputCorrectIcon

@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
         © 2022 movie quotes. All rights reserved.
       </p>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

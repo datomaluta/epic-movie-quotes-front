@@ -27,7 +27,7 @@ const ShowPasswordIcon: React.FC = () => {
         </clipPath>
       </defs>
     </svg>
-  );
-};
+  )
+}
 
-export default ShowPasswordIcon;
+export default ShowPasswordIcon

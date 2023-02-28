@@ -12,7 +12,7 @@ const GoogleIcon: React.FC = () => {
         fill='#CED4DA'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default GoogleIcon;
+export default GoogleIcon

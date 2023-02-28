@@ -1,5 +1,5 @@
-import { QuoteLine, QuoteMiniLine } from 'components';
-import { PropsType } from './types';
+import { QuoteLine, QuoteMiniLine } from 'components'
+import { PropsType } from './types'
 
 const MoviePoster: React.FC<PropsType> = (props) => {
   return (
@@ -27,7 +27,7 @@ const MoviePoster: React.FC<PropsType> = (props) => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MoviePoster;
+export default MoviePoster

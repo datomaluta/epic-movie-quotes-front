@@ -2,7 +2,6 @@ import Image from 'next/image'
 import useImageInput from './useImageInput'
 import { bigAvatar } from 'public'
 import { PropsType } from './types'
-import { t } from 'i18next'
 
 const ImageInput: React.FC<PropsType> = (props) => {
   const { form, baseImage, userData, t } = useImageInput(props.name)
@@ -19,10 +18,12 @@ const ImageInput: React.FC<PropsType> = (props) => {
 
       {baseImage && (
         <div className='w-[11.75rem] h-[11.75rem] rounded-full overflow-hidden'>
-          <img
+          <Image
             src={baseImage}
             alt='avatar'
             className='h-full w-full object-cover'
+            width={100}
+            height={100}
           />
         </div>
       )}

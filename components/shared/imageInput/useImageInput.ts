@@ -21,7 +21,7 @@ const useImageInput = (name: string) => {
   useEffect(() => {
     const baseImageSetter = async () => {
       const base = await convertBase64(inputData[0])
-      setBaseImage(base)
+      setBaseImage(base as string)
     }
     if (inputData[0]) {
       baseImageSetter()

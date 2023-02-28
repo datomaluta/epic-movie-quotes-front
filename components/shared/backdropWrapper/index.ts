@@ -1,1 +1,1 @@
-export { default as BackdropWrapper } from './BackdropWrapper';
+export { default as BackdropWrapper } from './BackdropWrapper'
