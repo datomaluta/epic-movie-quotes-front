@@ -11,8 +11,7 @@ import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Movies = () => {
-  const { userQuery, addingMovie, addingMovieHandler, } =
-    useMovie()
+  const { addingMovie, addingMovieHandler } = useMovie()
 
   return (
     <div className='bg-news-feed min-h-screen text-white'>
@@ -42,7 +41,7 @@ const Movies = () => {
             </div>
           </div>
 
-          {addingMovie && <AddMovieModal/>}
+          {addingMovie && <AddMovieModal />}
 
           <div className='flex gap-4 gap-y-16 flex-wrap'>
             <MovieCard />

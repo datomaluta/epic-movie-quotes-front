@@ -48,11 +48,7 @@ export type UpdateUserDataType = {
   password: string
 }
 
-export type UpdateFormData = {
-  name: string
-  password: string
-  image: string | Blob
-}
+export type UpdateFormData = any
 
 export type NewEmailType = {
   email: string

@@ -1,9 +1,7 @@
-import { SetState } from 'types'
-
-export type PropsType = { showOrHideEmailModal: SetState<boolean> }
+export type PropsType = { showOrHideEmailModal: (param: boolean) => void }
 
 export type HookPropsType = {
-  showOrHideModal: SetState<boolean>
+  showOrHideModal: (param: boolean) => void
 }
 
 export type DataType = {
