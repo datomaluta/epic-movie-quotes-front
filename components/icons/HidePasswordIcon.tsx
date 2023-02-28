@@ -12,7 +12,7 @@ const HidePasswordIcon: React.FC = () => {
         fill='#616161'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default HidePasswordIcon;
+export default HidePasswordIcon

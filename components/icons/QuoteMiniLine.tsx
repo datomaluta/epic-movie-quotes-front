@@ -16,7 +16,7 @@ const MiniLine: React.FC = () => {
         strokeWidth='2'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default MiniLine;
+export default MiniLine

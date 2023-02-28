@@ -1,7 +1,12 @@
-const MovieTextInput: React.FC = (props) => {
+import { PropsType } from './types'
+import useMovieTextInput from './useMovieTextInput'
+
+const MovieTextInput: React.FC<PropsType> = (props) => {
+  const { form } = useMovieTextInput()
   return (
     <>
       <input
+        {...form.register(props.name)}
         className='bg-transparent placeholder:text-white border border-light-grey rounded-[0.3rem] w-full text-xl px-4 py-2'
         placeholder={props.placeholder}
       />

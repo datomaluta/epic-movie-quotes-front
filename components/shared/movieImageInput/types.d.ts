@@ -1,3 +1,3 @@
 export type PropsType = {
-  children: React.ReactNode
+  name: string
 }

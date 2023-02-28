@@ -1,13 +1,12 @@
 import {
-  CameraIcon,
   CloseIcon,
+  MovieImageInput,
   MovieTextArea,
   MovieTextInput,
 } from 'components'
 import Image from 'next/image'
 import { bigAvatar } from 'public'
 import useAddMovieModal from './useAddMovieModal'
-import Select from 'react-select'
 import { FormProvider } from 'react-hook-form'
 
 const AddMovieModal: React.FC = () => {
@@ -98,17 +97,7 @@ const AddMovieModal: React.FC = () => {
               />
             </div>
 
-            <div className='relative mb-5 flex items-center border border-light-grey px-5 py-5'>
-              <CameraIcon />
-              <label className='ml-3'>Drag & drop your image here or</label>
-              <input hidden id='movieImage' type='file' />
-              <label
-                htmlFor='movieImage'
-                className='bg-image-purple px-3 py-2 rounded-sm ml-2'
-              >
-                Choose file
-              </label>
-            </div>
+            <MovieImageInput name='thumbnail' />
             <div className='relative mb-8'>
               <MovieTextInput name='release_date' placeholder='Release date' />
             </div>

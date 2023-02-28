@@ -10,7 +10,7 @@ const useAddMovieModal = () => {
 
   const addMovieForm = useForm({
     mode: 'all',
-    resolver: yupResolver(addMovieValidationSchema),
+    // resolver: yupResolver(addMovieValidationSchema),
     defaultValues: {
       movie_name_eng: '',
       movie_name_ka: '',
@@ -23,6 +23,7 @@ const useAddMovieModal = () => {
   })
 
   const onSubmitHandler = async (data) => {
+    console.log('clicked')
     console.log(data)
   }
 

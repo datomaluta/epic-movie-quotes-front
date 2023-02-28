@@ -12,7 +12,7 @@ const LangSwitch: React.FC = () => {
         fill='white'
       />
     </svg>
-  );
-};
+  )
+}
 
-export default LangSwitch;
+export default LangSwitch
