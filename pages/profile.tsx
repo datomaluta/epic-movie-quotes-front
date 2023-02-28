@@ -76,6 +76,7 @@ const Profile = () => {
             <BackArrowIcon width='20' height='20' />
           </Link>
           <Sidebar userData={userData} userQuery={userQuery} />
+          {/* @ts-ignore */}
           {userData.google_id && <GoogleProfile userData={userData} />}
           {!userData.google_id && (
             <div className='ml-[28rem] xl:ml-[16rem] lg:hidden max-w-[62.375rem] relative'>
@@ -246,6 +247,7 @@ const Profile = () => {
               }
             />
           )}
+          {/* @ts-ignore */}
           {userData.google_id && <MobileGoogleProfile userData={userData} />}
           {!showNewUsernameForm &&
             !showNewPasswordForm &&

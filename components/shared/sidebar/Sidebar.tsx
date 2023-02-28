@@ -1,14 +1,12 @@
 import { HomeIcon, MovieIcon } from 'components/icons'
-import { useGetTranslation } from 'hooks'
 import Image from 'next/image'
 import Link from 'next/link'
 import { profilePicture } from 'public'
-import { useSelector } from 'react-redux'
 import { NoSSR } from '../noSSR'
 import { PropsType } from './types'
 import useSidebar from './useSidebar'
 
-const Sidebar: React.FC<PropsType> = (props) => {
+const Sidebar: React.FC<PropsType> = () => {
   const { t, userData } = useSidebar()
   console.log(userData)
 

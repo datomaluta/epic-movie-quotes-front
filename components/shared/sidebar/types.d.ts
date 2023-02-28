@@ -1,5 +1,4 @@
-import { UserData } from 'types'
-
 export type PropsType = {
-  userData?: UserData
+  userData?: any
+  userQuery?: any
 }

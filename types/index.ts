@@ -1,2 +1,1 @@
-export * from './global';
-export * from './registerFormFields';
+export * from './global'
