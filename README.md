@@ -20,9 +20,9 @@ Epic movie quotes - is a platform where users can first register, then log in an
 
 ### Prerequisites
 
-- <img src="readme/assets/node.png" width="25" style="position: relative; top: 8px" /> _Node JS @12.X and up_
-- <img src="readme/assets/yarn.jpeg" width="25" style="position: relative; top: 7px" /> _Yarn @1.X and up_
-- <img src="readme/assets/npm.png" width="35" style="position: relative; top: 4px" /> _npm @6 and up_
+-  _Node JS @12.X and up_
+-  _Yarn @1.X and up_
+-  _npm @6 and up_
 
 #
 
